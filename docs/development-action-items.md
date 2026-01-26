@@ -28,6 +28,8 @@ A working checklist for building, polishing, and operating the phishbyhannah web
 
 ## Image workflow & performance
 
+- [ ] Design and add a header logo (image) and configure it in `config/_default/languages.en.toml` (replace text-only header)
+
 - [ ] Write `docs/image-workflow.md` with export presets (sizes/quality) and naming conventions
 - [ ] Add an optional helper script (e.g., `scripts/optimize-images.sh`) or a manual optimisation checklist
 - [ ] Define a hard file-size budget per image (e.g., <=800KB) and a max width (e.g., 2400px)
