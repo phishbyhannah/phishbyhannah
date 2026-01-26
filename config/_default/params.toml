@@ -16,7 +16,7 @@ enableStructuredBreadcrumbs = true
 
 replyByEmail = false
 
-mainSections = ["docs"]
+mainSections = ["posts"]
 # robots = ""
 
 disableImageOptimization = false
@@ -55,7 +55,7 @@ fingerprintAlgorithm = "sha512" # Valid values are "sha512" (default), "sha384",
   showRecent = false
   showRecentItems = 12
   showMoreLink = true
-  showMoreLinkDest = "docs"
+  showMoreLinkDest = "posts"
   cardView = true
   cardViewScreenWidth = false
   layoutBackgroundBlur = true # only used when layout equals background
