@@ -7,9 +7,6 @@ Like the sea — alive in motion — now captured.
 
 I help businesses stand out with content that feels authentic, strategic, and visually intentional. Whether you need beautiful imagery, scroll-stopping graphics, or consistent reels, I manage the full content flow so you always have polished, on-brand posts ready to share.
 
-## Services
 
-- [Social Media Packages](/services/social-media/)
-- [Resort Packages](/services/resorts/)
-- [Brand Packages](/services/brands/)
+{{< button href="/services/" >}}View services{{< /button >}}
 
