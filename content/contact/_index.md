@@ -1,6 +1,11 @@
 ---
 title: "Contact"
-draft: true
+draft: false
+summary: "Enquiries, availability, and custom package scopes."
 ---
 
-Add contact details (email, socials) and/or a contact form embed.
+Keen to chat if you have something specific in mind.
+
+- WhatsApp: **+61 0421 815 528**
+- Email: **hannah.marie.lamb@gmail.com**
+- Instagram: **@phish.by.hannah**
