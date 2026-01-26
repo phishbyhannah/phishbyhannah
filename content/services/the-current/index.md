@@ -17,9 +17,11 @@ Photo + caption management designed to keep your social presence active with pol
 - Hashtag strategy
 - Basic engagement *(replying to comments 2–3x per week)*
 
-## Investment
+## Enquire
 
-**Starting at $675 AUD**
+For pricing, availability, and the right fit, please enquire.
+
+{{< button href="/contact/" >}}Enquire{{< /button >}}
 
 ## Best for
 

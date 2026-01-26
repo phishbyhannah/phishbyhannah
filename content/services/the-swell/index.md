@@ -20,9 +20,11 @@ An elevated package designed for brands that want to educate, inform, and engage
 - Basic engagement *(replying to comments 2–3x per week)*
 - Content calendar
 
-## Investment
+## Enquire
 
-**$875 AUD**
+For pricing, availability, and the right fit, please enquire.
+
+{{< button href="/contact/" >}}Enquire{{< /button >}}
 
 ## Best for
 

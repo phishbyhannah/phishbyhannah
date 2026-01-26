@@ -18,9 +18,11 @@ A step up from The Current, adding branded graphic carousels for guides, FAQs, a
 - Basic engagement *(replying to comments 2–3x per week)*
 - Content calendar
 
-## Investment
+## Enquire
 
-**$750 AUD**
+For pricing, availability, and the right fit, please enquire.
+
+{{< button href="/contact/" >}}Enquire{{< /button >}}
 
 ## Best for
 

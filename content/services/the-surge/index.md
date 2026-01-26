@@ -19,9 +19,11 @@ A growth-focused tier that blends strong visuals with the reach-power of reels â
 - Basic engagement
 - Monthly insights report
 
-## Investment
+## Enquire
 
-**$1100 AUD**
+For pricing, availability, and the right fit, please enquire.
+
+{{< button href="/contact/" >}}Enquire{{< /button >}}
 
 ## Best for
 
