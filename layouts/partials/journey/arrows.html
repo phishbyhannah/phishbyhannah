@@ -1,0 +1,49 @@
+{{ $journey := .Site.Params.journey }}
+{{ if not $journey }}
+  {{ $journey = slice
+    (dict "id" "project" "title" "The Project" "url" "/project/")
+    (dict "id" "works" "title" "Works" "url" "/works/")
+    (dict "id" "field" "title" "Field" "url" "/field/")
+    (dict "id" "about" "title" "Who is PHISH" "url" "/about/")
+    (dict "id" "contact" "title" "Contact" "url" "/contact/")
+  }}
+{{ end }}
+
+{{ $current := printf "/%s/" (trim .RelPermalink "/") }}
+{{ $index := -1 }}
+{{ range $i, $item := $journey }}
+  {{ if eq (printf "/%s/" (trim $item.url "/")) $current }}
+    {{ $index = $i }}
+  {{ end }}
+{{ end }}
+
+{{ if ge $index 0 }}
+  {{ $length := len $journey }}
+  {{ $prev := dict "url" "/" "title" "Home" }}
+  {{ if gt $index 0 }}
+    {{ $prev = index $journey (sub $index 1) }}
+  {{ end }}
+
+  {{ $next := dict }}
+  {{ if eq $index (sub $length 1) }}
+    {{ $next = index $journey 0 }}
+  {{ else }}
+    {{ $next = index $journey (add $index 1) }}
+  {{ end }}
+
+  <aside class="journey-arrows" aria-label="Page journey navigation">
+    <a class="journey-arrow journey-back" href="{{ $prev.url }}" aria-label="Back to {{ $prev.title }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M15 5l-7 7 7 7"></path>
+      </svg>
+      <span class="journey-label" aria-hidden="true">Back to {{ $prev.title }}</span>
+    </a>
+
+    <a class="journey-arrow journey-next" href="{{ $next.url }}" aria-label="Next: {{ $next.title }}">
+      <span class="journey-label" aria-hidden="true">Next: {{ $next.title }}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </aside>
+{{ end }}

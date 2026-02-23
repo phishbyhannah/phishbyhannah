@@ -1,0 +1,23 @@
+{{ with index .Site.Data "works-values" }}
+{{ with .values }}
+<section class="section section-values" aria-labelledby="core-campaign-assets-title">
+  <div class="section-content section-values-head">
+    <h2 id="core-campaign-assets-title">Core Campaign Assets</h2>
+    <p>Six image types that build complete brand narratives.</p>
+  </div>
+
+  <div class="section-content values-grid" role="list">
+    {{ range . }}
+    <button class="value-card" type="button" aria-label="{{ .title }}" role="listitem">
+      <img src="/images/{{ .image }}" alt="{{ .alt }}" loading="lazy">
+      <span class="value-overlay" aria-hidden="true"></span>
+      <span class="value-copy">
+        <span class="value-title">{{ .title }}</span>
+        <span class="value-description">{{ .description }}</span>
+      </span>
+    </button>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

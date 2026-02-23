@@ -1,0 +1,44 @@
+{{ define "main" }}
+<main class="contact-page content" role="main">
+  <section id="{{ .Params.transition.id }}" class="post-holder light contact-transition-holder contact-reveal">
+    <img class="contact-transition-bg" src="/images/peopleinplace/Phish-peopleinplaces-plow-ningaloo-2025-001.jpg" alt="Contact transition background image" loading="lazy">
+    <div class="contact-transition-overlay"></div>
+    <img class="contact-transition-letters" src="/images/hero/phish-heroimage-Phishletters-people.png" alt="PHISH letters people" loading="lazy">
+    <article class="post contact-transition-post">
+      <section class="post-content contact-transition-copy">
+        {{ with index .Params.transition.lines 0 }}<h1 class="post-title contact-transition-title">{{ . }}</h1>{{ end }}
+      </section>
+    </article>
+  </section>
+
+  {{ partial "contact/form.html" . }}
+
+  <section class="section contact-quote-image" aria-label="Contact quote image">
+    <img class="contact-quote-bg" src="/images/hero/phish-heroimage-contact2.jpg" alt="Contact quote background image" loading="lazy">
+    <div class="contact-quote-overlay"></div>
+    <div class="section-content contact-quote-copy">
+      {{ range .Params.hero.body_lines }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </section>
+
+  {{ $contactLinks := site.Data.home.contact.links }}
+  {{ $emailURL := "mailto:hannah.marie.lamb@gmail.com" }}
+  {{ $instagramURL := "https://www.instagram.com/phish.by.hannah/" }}
+  {{ with $contactLinks }}
+    {{ range . }}
+      {{ if eq .label "Email" }}{{ $emailURL = .url }}{{ end }}
+      {{ if eq .label "Instagram" }}{{ $instagramURL = .url }}{{ end }}
+    {{ end }}
+  {{ end }}
+  <section class="section contact-bottom-image" aria-label="Contact bottom image">
+    <img src="/images/hero/phish-heroimage-contact.png" alt="PHISH contact image" loading="lazy">
+    <div class="contact-bottom-overlay">
+      <h2 class="contact-bottom-title">Find me</h2>
+      <div class="contact-bottom-actions">
+        <a class="contact-bottom-link" href="{{ $emailURL }}">Email</a>
+        <a class="contact-bottom-link" href="{{ $instagramURL }}" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}

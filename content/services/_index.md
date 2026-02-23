@@ -37,4 +37,4 @@ Add-ons are available across packages (for campaigns, extra reels, deeper engage
 - Community management (DMs + comments)
 - Brand voice guide
 
-{{< button href="/contact/" >}}Enquire{{< /button >}}
+<a class="btn phish-cta" href="/contact/">Enquire</a>

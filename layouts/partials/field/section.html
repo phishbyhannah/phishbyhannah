@@ -1,0 +1,42 @@
+{{ $s := .section }}
+{{ $tone := cond (eq $s.tone "light") "tone-light" "tone-dark" }}
+{{ $bgImage := "" }}
+{{ with $s.bg_image }}
+  {{ with $.page.Resources.GetMatch . }}
+    {{ $bgImage = .RelPermalink }}
+  {{ else }}
+    {{ $bgImage = . }}
+  {{ end }}
+{{ end }}
+{{ $secondaryImage := "" }}
+{{ with $s.secondary_image }}
+  {{ with $.page.Resources.GetMatch . }}
+    {{ $secondaryImage = .RelPermalink }}
+  {{ else }}
+    {{ $secondaryImage = . }}
+  {{ end }}
+{{ end }}
+{{ $tertiaryImage := "" }}
+{{ with $s.tertiary_image }}
+  {{ with $.page.Resources.GetMatch . }}
+    {{ $tertiaryImage = .RelPermalink }}
+  {{ else }}
+    {{ $tertiaryImage = . }}
+  {{ end }}
+{{ end }}
+<section id="{{ $s.id }}" class="field-section field-copy {{ $tone }}{{ if $s.narrow }} field-copy-narrow{{ end }}">
+  {{ with $bgImage }}<img class="field-bg" src="{{ . }}" alt="{{ $s.title }} background" loading="lazy">{{ end }}
+  {{ with $secondaryImage }}<img class="field-bg-secondary" src="{{ . }}" alt="{{ $s.title }} secondary background" loading="lazy">{{ end }}
+  {{ with $tertiaryImage }}<img class="field-bg-tertiary" src="{{ . }}" alt="{{ $s.title }} tertiary background" loading="lazy">{{ end }}
+  {{ if $s.overlay }}<div class="field-overlay"></div>{{ end }}
+  <div class="field-wrap{{ if $s.narrow }} field-narrow{{ end }}">
+    {{ with $s.title }}<h2>{{ . }}</h2>{{ end }}
+    {{ range $s.paragraphs }}<p>{{ . }}</p>{{ end }}
+    {{ with $s.bullets }}
+    <ul class="field-list">
+      {{ range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    {{ with $s.closing }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>

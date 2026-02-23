@@ -1,0 +1,10 @@
+{{ $project := .project }}
+<section class="project-hero">
+  <img class="project-hero-base" src="/images/waterhabitat/phish-waterhabitat-mobular-baja-2025-001.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+  <img class="project-hero-overlay-image" src="/images/hero/phish-heroimage-Phishletters-people.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+  <div class="project-hero-shade" aria-hidden="true"></div>
+  <div class="project-hero-inner">
+    <h1>{{ $project.title }}</h1>
+    {{ with $project.intro }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>

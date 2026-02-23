@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ $project := .Site.Data.project.project }}
+<main class="project-exhibition" role="main">
+  {{ partial "project/hero.html" (dict "project" $project "page" .) }}
+
+  {{ range $body := $project.bodies }}
+    {{ partial "project/section.html" (dict "body" $body) }}
+    {{ range $project.breaks }}
+      {{ if and (isset . "between") (eq (index .between 0) $body.id) }}
+        {{ partial "project/break.html" . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ range $project.breaks }}
+    {{ if and (isset . "endcap") .endcap }}
+      {{ partial "project/break.html" . }}
+    {{ end }}
+  {{ end }}
+</main>
+{{ end }}

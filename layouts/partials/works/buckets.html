@@ -1,0 +1,69 @@
+{{ $buckets := .data.buckets }}
+<section class="works-buckets-block" aria-labelledby="works-buckets-title">
+  <div class="works-shell">
+    <h2 id="works-buckets-title" class="works-section-title">Offerings</h2>
+    <div class="works-bucket-grid">
+      {{ range $i, $b := $buckets }}
+      <article class="works-bucket-card{{ if $b.signature }} is-signature{{ end }}" style="--bucket-bg:url('/images/{{ $b.image }}');">
+        <div class="works-bucket-overlay"></div>
+        {{ if $b.signature }}<p class="works-signature">Signature</p>{{ end }}
+        <div class="works-bucket-content">
+          <h3>{{ $b.title }}</h3>
+          {{ with $b.teaser }}<p class="works-teaser">{{ . }}</p>{{ end }}
+          {{ with $b.lead }}<p class="works-lead">{{ . }}</p>{{ end }}
+
+          {{ with $b.body }}
+            {{ if reflect.IsSlice . }}
+              {{ range . }}<p>{{ . }}</p>{{ end }}
+            {{ else }}
+              <p>{{ . }}</p>
+            {{ end }}
+          {{ end }}
+
+          {{ with $b.includes }}
+          <ul class="works-list">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{ end }}
+
+          {{ with $b.formats_heading }}<h4>{{ . }}</h4>{{ end }}
+          {{ with $b.formats }}
+          <div class="works-formats-grid">
+            {{ range . }}
+            <section class="works-format-card">
+              <h5>{{ .title }}</h5>
+              {{ with .items }}
+              <ul class="works-list">
+                {{ range . }}<li>{{ . }}</li>{{ end }}
+              </ul>
+              {{ end }}
+            </section>
+            {{ end }}
+          </div>
+          {{ end }}
+
+          {{ with $b.pillars_heading }}<h4>{{ . }}</h4>{{ end }}
+          {{ with $b.pillars }}
+          <div class="works-pillars-grid">
+            {{ range . }}<span>{{ . }}</span>{{ end }}
+          </div>
+          {{ end }}
+
+          {{ with $b.closing }}
+            {{ if reflect.IsSlice . }}
+              {{ range . }}<p>{{ . }}</p>{{ end }}
+            {{ else }}
+              <p>{{ . }}</p>
+            {{ end }}
+          {{ end }}
+
+          {{ with $b.cta_url }}
+          <p><a class="works-cta" href="{{ . }}">{{ default "Discuss your project ->" $b.cta_label }}</a></p>
+          {{ end }}
+        </div>
+        {{ with $b.hover }}<p class="works-hover-panel" aria-hidden="true">{{ . }}</p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

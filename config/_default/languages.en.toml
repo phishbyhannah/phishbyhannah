@@ -1,21 +1,11 @@
-languageCode = "en"
+languageCode = "en-au"
 languageName = "English"
 weight = 1
-title = "phishbyhannah"
+title = "PHISH"
 
 [params]
   displayName = "English"
-  isoCode = "en"
+  isoCode = "en-AU"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/logo.jpg"
-  description = "Underwater photography, content creation, and social media support for ocean-aligned lifestyle brands."
-
-[params.author]
-  name = "Hannah Lamb"
-  image = "img/phishbyhannah_profile.jpg"
-  headline = "Underwater photographer + content creator"
-  bio = "I create photo-led content that feels authentic, strategic, and visually intentional — for resorts, lifestyle brands, and ocean experiences. From underwater storytelling to scroll-stopping social assets, I manage the full content flow so you always have polished posts ready to share."
-  links = [
-    { instagram = "https://www.instagram.com/phish.by.hannah/" }
-  ]
+  description = "People in places, above and below the surface."

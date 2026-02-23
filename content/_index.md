@@ -1,12 +1,11 @@
 ---
-title: "phishbyhannah"
-summary: "Underwater photography, content creation, and social media support for ocean-aligned lifestyle brands."
+header_image: "images/phish-waterhabitat-leopardshark-ningaloo-2025.006.jpg"
+header_use_video: false
+header_logo: "brand/phish-wordmark.png"
+header_headline: "PHISH"
+header_subheadline: "Motion Captured. .<br><div class='hero-cta-row'><a class='btn site-menu phish-cta' href='/project/'>Enter the Project</a><a class='btn site-menu phish-cta' href='/works/'>Work with PHISH</a></div>"
+nav_to_top_title: "Top"
+nav_to_top_weight: none
 ---
 
-Like the sea — alive in motion — now captured.
-
-I help businesses stand out with content that feels authentic, strategic, and visually intentional. Whether you need beautiful imagery, scroll-stopping graphics, or consistent reels, I manage the full content flow so you always have polished, on-brand posts ready to share.
-
-
-{{< button href="/services/" >}}View services{{< /button >}}
-
+<!-- TODO: Replace /brand/phish-wordmark.png and /brand/phish-symbol.png with final PHISH exports. -->

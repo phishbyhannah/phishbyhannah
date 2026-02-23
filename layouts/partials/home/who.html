@@ -1,0 +1,11 @@
+{{ $w := site.Data.home.who_is_phish }}
+<section class="section who" id="who" aria-labelledby="who-title">
+  <img class="section-bg" src="{{ $w.image }}" alt="{{ $w.image_alt }}" loading="lazy">
+  <div class="section-overlay"></div>
+  <div class="section-content">
+    <h2 id="who-title">Who is PHISH</h2>
+    <h3>{{ $w.title }}</h3>
+    {{ range $w.paragraphs }}<p>{{ . }}</p>{{ end }}
+    <p><a class="text-cta" href="{{ $w.cta_url }}">{{ $w.cta_text }} -></a></p>
+  </div>
+</section>

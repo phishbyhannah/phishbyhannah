@@ -1,0 +1,46 @@
+{{ $body := .body }}
+<section class="project-body project-{{ $body.layout }}" id="{{ $body.id }}">
+  <header class="project-body-head">
+    <h2>{{ $body.place }}</h2>
+    <p class="project-year">{{ $body.year }}</p>
+    {{ with $body.intro }}<p class="project-micro">{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="project-gallery project-gallery-{{ $body.layout }}">
+    {{ $total := len $body.images }}
+    {{ range $idx, $img := $body.images }}
+      {{ if eq $body.layout "editorial-column" }}
+      <figure class="project-frame {{ if eq (mod $idx 5) 0 }}project-frame-wide{{ end }}">
+        <img src="{{ if eq (mod $idx 5) 0 }}{{ $img.fullpage_path }}{{ else }}{{ $img.path }}{{ end }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ else if eq $body.layout "horizontal-snap" }}
+      <figure class="project-frame project-snap-item">
+        <img src="{{ $img.path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ else if eq $body.layout "horizontal-masonry-snap" }}
+      {{ $local := mod $idx 6 }}
+      {{ if eq $local 0 }}
+      <div class="project-snap-cluster" role="group" aria-label="{{ $body.place }} {{ $body.year }} image cluster">
+      {{ end }}
+      <figure class="project-frame project-cluster-item {{ if eq $local 0 }}project-cluster-wide{{ else if eq $local 1 }}project-cluster-tall{{ else if eq $local 4 }}project-cluster-wide-short{{ else if eq $local 5 }}project-cluster-tall-alt{{ end }}">
+        <img src="{{ $img.path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ if or (eq (mod (add $idx 1) 6) 0) (eq (add $idx 1) $total) }}
+      </div>
+      {{ end }}
+      {{ else if eq $body.layout "grid" }}
+      <figure class="project-frame project-grid-item">
+        <img src="{{ $img.grid_path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ else if eq $body.layout "rhythm" }}
+      <figure class="project-frame project-rhythm-item">
+        <img src="{{ if eq (mod (add $idx 1) 3) 0 }}{{ $img.fullpage_path }}{{ else }}{{ $img.path }}{{ end }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ else if eq $body.layout "masonry" }}
+      <figure class="project-frame project-masonry-item">
+        <img src="{{ $img.grid_path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>

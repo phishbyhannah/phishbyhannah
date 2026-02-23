@@ -1,0 +1,15 @@
+{{ $c := site.Data.home.contact }}
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <img class="section-bg" src="{{ $c.image }}" alt="{{ $c.image_alt }}" loading="lazy">
+  <div class="section-overlay"></div>
+  <div class="section-content">
+    {{ with $c.title }}<h2 id="contact-title">{{ . }}</h2>{{ end }}
+    {{ range $c.paragraphs }}<p>{{ . }}</p>{{ end }}
+    <p><a class="text-cta" href="{{ $c.cta_url }}">{{ $c.cta_text }} -></a></p>
+    <ul class="contact-links">
+      {{ range $c.links }}
+      <li><a href="{{ .url }}">{{ .label }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</section>

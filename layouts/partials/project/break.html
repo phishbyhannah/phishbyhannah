@@ -1,0 +1,17 @@
+<section class="project-break project-break-{{ .type }}">
+  {{ if eq .type "pair" }}
+    <div class="project-break-pair">
+      {{ range .images }}
+      <figure class="project-break-figure">
+        <img src="{{ .path }}" alt="{{ .alt }}" loading="lazy" decoding="async">
+      </figure>
+      {{ end }}
+    </div>
+  {{ else }}
+    {{ with index .images 0 }}
+    <figure class="project-break-figure">
+      <img src="{{ .path }}" alt="{{ .alt }}" loading="lazy" decoding="async">
+    </figure>
+    {{ end }}
+  {{ end }}
+</section>

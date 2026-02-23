@@ -1,0 +1,25 @@
+{{ $page := . }}
+{{ with .Params.portfolio_galleries }}
+<section class="section works-collections" aria-labelledby="works-collections-title">
+  <div class="section-content works-collections-head">
+    <h2 id="works-collections-title">Selected Bodies of Work</h2>
+    <p>Curated campaign sets designed to show range, consistency and narrative control.</p>
+  </div>
+  {{ range $gIdx, $gallery := . }}
+  <div class="works-collection">
+    <div class="section-content works-collection-head">
+      <h3><span class="works-collection-index">{{ printf "%02d" (add $gIdx 1) }}</span> {{ $gallery.title }}</h3>
+      {{ with $gallery.intro }}<p>{{ . }}</p>{{ end }}
+    </div>
+    <div class="works-collection-grid" role="list">
+      {{ range $i, $item := first 12 $gallery.items }}
+      <figure class="works-collection-item{{ if eq $i 0 }} is-featured{{ end }}" role="listitem">
+        <img src="{{ $item.image }}" alt="{{ $item.alt }}" loading="lazy">
+        {{ with $item.caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+      </figure>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

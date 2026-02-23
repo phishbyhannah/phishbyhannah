@@ -1,0 +1,16 @@
+{{ $section := .section }}
+<section id="{{ $section.id }}" class="about-section about-process about-dark{{ if $section.bg_image }} about-has-bg{{ end }}">
+  {{ if $section.bg_image }}<img class="about-section-bg" src="{{ $section.bg_image }}" alt="{{ $section.title }} background" loading="lazy">{{ end }}
+  {{ if $section.overlay }}<div class="about-section-overlay"></div>{{ end }}
+  <div class="about-wrap">
+    <h2>{{ $section.title }}</h2>
+    <div class="about-process-grid">
+      {{ range $section.blocks }}
+      <article class="about-process-block">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

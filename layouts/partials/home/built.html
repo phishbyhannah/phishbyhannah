@@ -1,0 +1,10 @@
+{{ $b := site.Data.home.built_in_field }}
+<section class="section built" id="built-in-field" aria-labelledby="built-title">
+  <img class="section-bg" src="{{ $b.image }}" alt="{{ $b.image_alt }}" loading="lazy">
+  <div class="section-overlay"></div>
+  <div class="section-content left-half">
+    <h2 id="built-title">{{ $b.title }}</h2>
+    {{ range $b.paragraphs }}<p>{{ . }}</p>{{ end }}
+    <p><a class="text-cta" href="{{ $b.cta_url }}">{{ $b.cta_text }} -></a></p>
+  </div>
+</section>

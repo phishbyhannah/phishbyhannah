@@ -1,0 +1,13 @@
+{{ define "main" }}
+<main class="inner-page{{ if eq .RelPermalink "/contact/" }} contact-page{{ end }}">
+  {{ if eq .RelPermalink "/contact/" }}
+  {{ $contact := site.Data.home.contact }}
+  <img class="section-bg" src="{{ $contact.page_image }}" alt="Contact page background image" loading="eager" fetchpriority="high">
+  <div class="section-overlay"></div>
+  {{ end }}
+  <section class="inner-wrap">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </section>
+</main>
+{{ end }}

@@ -1,0 +1,48 @@
+<div class="brand-nav-stack">
+  <a class="brand-home" href="/" aria-label="PHISH home">
+    <img src="/brand/phish-logo-whitetp.png" alt="" loading="eager" fetchpriority="high">
+    <span class="sr-only">Home</span>
+  </a>
+
+  <nav class="top-nav" aria-label="Primary">
+    <div class="top-nav-inner">
+      <a class="top-nav-link{{ if eq .Section "project" }} is-active{{ end }}" href="/project/" aria-label="The Project">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="4" width="8" height="7" rx="1"></rect>
+          <rect x="13" y="4" width="8" height="7" rx="1"></rect>
+          <rect x="3" y="13" width="8" height="7" rx="1"></rect>
+          <rect x="13" y="13" width="8" height="7" rx="1"></rect>
+        </svg>
+        <span class="sr-only">The Project</span>
+        <span class="nav-tooltip" aria-hidden="true">The Project</span>
+      </a>
+
+      <a class="top-nav-link top-nav-link--works{{ if eq .Section "works" }} is-active{{ end }}" href="/works/" aria-label="Works">
+        <img src="/brand/Phish-icon-works.png" alt="" aria-hidden="true" loading="lazy">
+        <span class="sr-only">Works</span>
+        <span class="nav-tooltip" aria-hidden="true">Works</span>
+      </a>
+
+      <a class="top-nav-link top-nav-link--field{{ if eq .Section "field" }} is-active{{ end }}" href="/field/" aria-label="Field">
+        <img src="/brand/Phish-icon-field.png" alt="" aria-hidden="true" loading="lazy">
+        <span class="sr-only">Field</span>
+        <span class="nav-tooltip" aria-hidden="true">Field</span>
+      </a>
+
+      <a class="top-nav-link top-nav-link--about{{ if eq .Section "about" }} is-active{{ end }}" href="/about/" aria-label="Who is PHISH">
+        <img src="/brand/Phish-icon-about.png" alt="" aria-hidden="true" loading="lazy">
+        <span class="sr-only">Who is PHISH</span>
+        <span class="nav-tooltip" aria-hidden="true">Who is PHISH</span>
+      </a>
+
+      <a class="top-nav-link{{ if eq .Section "contact" }} is-active{{ end }}" href="/contact/" aria-label="Contact">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="M4 7l8 6 8-6"></path>
+        </svg>
+        <span class="sr-only">Contact</span>
+        <span class="nav-tooltip" aria-hidden="true">Contact</span>
+      </a>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,17 @@
+{{ $section := .section }}
+<section id="{{ $section.id }}" class="about-section about-cards about-light{{ if $section.bg_image }} about-has-bg{{ end }}">
+  {{ if $section.bg_image }}<img class="about-section-bg" src="{{ $section.bg_image }}" alt="{{ $section.title }} background" loading="lazy">{{ end }}
+  {{ if $section.overlay }}<div class="about-section-overlay"></div>{{ end }}
+  <div class="about-wrap">
+    <h2>{{ $section.title }}</h2>
+    <div class="about-card-grid">
+      {{ range $section.cards }}
+      <article class="about-card">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <p><a class="about-soft-cta" href="{{ .cta_url }}">{{ .cta_label }}</a></p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

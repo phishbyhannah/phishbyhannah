@@ -1,0 +1,46 @@
+{{ $f := .Params.form_section }}
+<section id="{{ $f.id }}" class="post-holder dark contact-form-holder contact-reveal">
+  <article class="post contact-form-post">
+    <div class="contact-form-layout">
+      <section class="contact-form-main" aria-label="Contact form area">
+        <header class="post-header">
+          <h2 class="post-title">{{ $f.heading }}</h2>
+        </header>
+        <section class="post-content">
+          <!-- Static-host friendly form shell. Add your endpoint later by setting action. -->
+          <!-- Netlify-compatible later: keep form name and add data-netlify="true" if desired. -->
+          <form class="contact-form" name="contact" method="post" action="" aria-label="Contact form">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required aria-label="Name">
+
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required aria-label="Email">
+
+            <label for="contact-org">Organisation</label>
+            <input id="contact-org" name="organisation" type="text" autocomplete="organization" aria-label="Organisation">
+
+            <label for="contact-topic">What is this about?</label>
+            <select id="contact-topic" name="topic" required aria-label="What is this about?">
+              <option value="" selected disabled>Select one</option>
+              <option value="Brand collaboration">Brand collaboration</option>
+              <option value="Strategic content partnership">Strategic content partnership</option>
+              <option value="Expedition enquiry">Expedition enquiry</option>
+              <option value="Education program">Education program</option>
+              <option value="General">General</option>
+            </select>
+
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="7" required aria-label="Message"></textarea>
+
+            <button type="submit">Start the conversation →</button>
+          </form>
+          <p class="contact-form-note">{{ $f.note }}</p>
+        </section>
+      </section>
+
+      <aside class="contact-form-image" aria-label="Supporting contact image">
+        <img src="/images/hero/phish-heroimage-bulls.png" alt="Bull sharks in open water" loading="lazy" decoding="async">
+      </aside>
+    </div>
+  </article>
+</section>

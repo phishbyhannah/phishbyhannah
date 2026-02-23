@@ -43,4 +43,4 @@ These packages are designed for businesses that want a steady, polished social p
 
 For pricing, availability, and the right fit, please enquire.
 
-{{< button href="/contact/" >}}Enquire{{< /button >}}
+<a class="btn phish-cta" href="/contact/">Enquire</a>

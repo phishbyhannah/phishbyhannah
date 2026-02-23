@@ -1,0 +1,11 @@
+{{ define "main" }}
+<main class="field-page content" role="main">
+  {{ partial "field/hero.html" . }}
+
+  {{ range .Params.sections }}
+    {{ partial "field/section.html" (dict "page" $ "section" .) }}
+  {{ end }}
+
+  {{ partial "field/closing.html" . }}
+</main>
+{{ end }}

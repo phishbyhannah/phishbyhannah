@@ -1,0 +1,152 @@
+.journey-arrows {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+}
+
+.journey-arrow {
+  position: fixed;
+  top: 62%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.55rem;
+  border: 1px solid rgba(244, 246, 252, 0.2);
+  border-radius: 999px;
+  background: rgba(8, 13, 18, 0.44);
+  backdrop-filter: blur(10px);
+  color: rgba(244, 246, 252, 0.86);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  opacity: 0.62;
+  transition: opacity 220ms ease, transform 220ms ease, border-color 220ms ease;
+}
+
+.journey-back {
+  left: max(0.75rem, env(safe-area-inset-left));
+}
+
+.journey-next {
+  right: max(0.75rem, env(safe-area-inset-right));
+}
+
+.journey-arrow svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
+.journey-label {
+  font-size: 0.7rem;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transform: translateX(2px);
+  transition: opacity 220ms ease, max-width 220ms ease, transform 220ms ease;
+}
+
+.journey-arrow:hover,
+.journey-arrow:focus-visible {
+  opacity: 1;
+  border-color: rgba(244, 246, 252, 0.45);
+}
+
+.journey-back:hover,
+.journey-back:focus-visible {
+  transform: translateY(-50%) translateX(-4px);
+}
+
+.journey-next:hover,
+.journey-next:focus-visible {
+  transform: translateY(-50%) translateX(4px);
+}
+
+.journey-arrow:hover .journey-label,
+.journey-arrow:focus-visible .journey-label {
+  opacity: 1;
+  max-width: 14rem;
+  transform: translateX(0);
+}
+
+.journey-arrow:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+html.journey-enhanced .journey-arrow {
+  opacity: 0;
+  transform: translateY(calc(-50% + 8px));
+}
+
+html.journey-enhanced .journey-arrows.is-visible .journey-arrow {
+  opacity: 0.62;
+  transform: translateY(-50%);
+}
+
+html.journey-enhanced .journey-arrows.is-visible .journey-arrow:hover,
+html.journey-enhanced .journey-arrows.is-visible .journey-arrow:focus-visible {
+  opacity: 1;
+}
+
+@media (max-width: 860px) {
+  .journey-arrows {
+    inset: auto max(0.45rem, env(safe-area-inset-right)) max(0.5rem, env(safe-area-inset-bottom)) max(0.45rem, env(safe-area-inset-left));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .journey-arrow {
+    position: static;
+    top: auto;
+    transform: none;
+    justify-content: center;
+    padding: 0.52rem 0.58rem;
+    opacity: 0.9;
+  }
+
+  .journey-back,
+  .journey-next {
+    left: auto;
+    right: auto;
+  }
+
+  .journey-label {
+    opacity: 1;
+    max-width: 16rem;
+    transform: none;
+    font-size: 0.64rem;
+  }
+
+  .journey-back:hover,
+  .journey-back:focus-visible,
+  .journey-next:hover,
+  .journey-next:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  html.journey-enhanced .journey-arrow,
+  html.journey-enhanced .journey-arrows.is-visible .journey-arrow {
+    transform: none;
+    opacity: 0.9;
+  }
+
+  .project-page,
+  .works-page,
+  .field-page,
+  .about-journey,
+  .contact-page {
+    padding-bottom: 4.4rem;
+  }
+}

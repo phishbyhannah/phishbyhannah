@@ -1,0 +1,15 @@
+{{ $d := .data }}
+{{ $heroImage := "/images/works-brand-campaigns.jpg" }}
+{{ with $d.buckets }}
+  {{ with index . 0 }}
+    {{ with .image }}{{ $heroImage = printf "/images/%s" . }}{{ end }}
+  {{ end }}
+{{ end }}
+<section class="works-hero-block" aria-labelledby="works-heading">
+  <img class="works-hero-image" src="{{ $heroImage }}" alt="Works hero background" loading="eager" fetchpriority="high">
+  <div class="works-hero-overlay"></div>
+  <div class="works-shell works-hero-copy">
+    <p class="works-kicker">{{ $d.title }}</p>
+    <h1 id="works-heading">{{ $d.headline }}</h1>
+  </div>
+</section>

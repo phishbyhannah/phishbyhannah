@@ -1,0 +1,25 @@
+{{ $page := . }}
+{{ with .Params.process }}
+<section class="section works-process" aria-labelledby="works-process-title">
+  <div class="section-content">
+    <h2 id="works-process-title">{{ .title }}</h2>
+    <div class="works-process-grid">
+      {{ range $i, $block := .blocks }}
+      {{ $imgPath := "" }}
+      {{ with $block.image }}
+        {{ with $page.Resources.GetMatch . }}
+          {{ $imgPath = .RelPermalink }}
+        {{ else }}
+          {{ $imgPath = . }}
+        {{ end }}
+      {{ end }}
+      <article class="works-process-block"{{ with $imgPath }} style="--works-process-bg:url('{{ . }}');"{{ end }}>
+        <span class="works-process-step">{{ printf "%02d" (add $i 1) }}</span>
+        <h3>{{ $block.title }}</h3>
+        <p class="works-process-body">{{ $block.text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

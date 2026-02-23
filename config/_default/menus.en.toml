@@ -1,43 +1,19 @@
-# Menus
-
-# Main nav (header)
 [[main]]
-  name = "Home"
-  pageRef = "/"
+  name = "The Project"
+  url = "/project/"
   weight = 10
 
 [[main]]
-  name = "About"
-  pageRef = "about"
+  name = "Works"
+  url = "/works/"
   weight = 20
 
 [[main]]
-  name = "Services"
-  pageRef = "services"
+  name = "Field"
+  url = "/field/"
   weight = 30
-
-[[main]]
-  name = "Blog"
-  pageRef = "posts"
-  weight = 40
 
 [[main]]
   name = "Contact"
-  pageRef = "contact"
-  weight = 50
-
-# Footer nav
-[[footer]]
-  name = "Blog"
-  pageRef = "posts"
-  weight = 10
-
-[[footer]]
-  name = "Tags"
-  pageRef = "tags"
-  weight = 20
-
-[[footer]]
-  name = "Categories"
-  pageRef = "categories"
-  weight = 30
+  url = "/contact/"
+  weight = 40

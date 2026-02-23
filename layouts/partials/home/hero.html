@@ -1,0 +1,15 @@
+{{ $h := site.Data.home.hero }}
+<section class="section hero" id="top" aria-labelledby="hero-title">
+  <img class="hero-bg" src="{{ $h.image }}" alt="{{ $h.image_alt }}" loading="eager" fetchpriority="high">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 id="hero-title">{{ $h.title }}</h1>
+    <p class="hero-tagline">{{ $h.tagline }}</p>
+    <p class="hero-subline">{{ $h.subline }}</p>
+    <nav class="hero-links" aria-label="Quick links">
+      <a href="#project">The Project</a>
+      <a href="#works">Works</a>
+      <a href="#field">Field</a>
+    </nav>
+  </div>
+</section>

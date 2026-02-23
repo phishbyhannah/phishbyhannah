@@ -1,0 +1,516 @@
+@font-face {
+  font-family: "Siffon";
+  src: url("/fonts/Siffon-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  /* TODO: Add static/fonts/Siffon-Regular.woff2 */
+}
+
+@font-face {
+  font-family: "Siffon";
+  src: url("/fonts/Siffon-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  /* TODO: Add static/fonts/Siffon-Bold.woff2 */
+}
+
+@font-face {
+  font-family: "NOW";
+  src: url("/fonts/NOW-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  /* TODO: Add static/fonts/NOW-Regular.woff2 */
+}
+
+@font-face {
+  font-family: "NOW";
+  src: url("/fonts/NOW-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  /* TODO: Add static/fonts/NOW-Medium.woff2 */
+}
+
+:root {
+  --phish-black: #020f18; /* Site background, near-black derived from #054467 */
+  --phish-white: #f4f6fc; /* Primary text on dark backgrounds */
+  --phish-text-dark: #f4f6fc; /* Force light-section text to white */
+  --phish-blue: #054467; /* Structural ocean blue */
+  --phish-green: #8a755d; /* Muted brown-grey highlight accent */
+  --phish-border: #1b3650; /* Subtle divider tone derived from blue */
+  --phish-white-soft: rgba(244, 246, 252, 0.82); /* Secondary text on dark backgrounds */
+  --phish-light-bg: #0b1219; /* Dark neutral for "light" sections in this build */
+
+  --cover-text-color: var(--phish-white) !important;
+  --highlight: var(--phish-green) !important;
+  --highlight-contrast: var(--phish-black) !important;
+  --highlight-inverse: var(--phish-black) !important;
+  --highlight-inverse-contrast: var(--phish-white) !important;
+  --sticky-menu-text-color: var(--phish-white) !important;
+  --section-light-text-color: var(--phish-text-dark) !important;
+  --section-light-bg-color: var(--phish-light-bg) !important;
+  --section-dark-text-color: var(--phish-white) !important;
+  --section-dark-bg-color: var(--phish-black) !important;
+  --single-page-text-color: var(--phish-white) !important;
+  --single-page-bg-color: var(--phish-black) !important;
+  --footer-color-background: var(--phish-black) !important;
+  --footer-color: var(--phish-white) !important;
+}
+
+body,
+.post-holder,
+.post-holder.dark,
+.post-holder .post,
+.post-content,
+.footer {
+  background: var(--phish-black);
+  color: var(--phish-white);
+  font-family: "NOW", sans-serif;
+  line-height: 1.7;
+}
+
+.post-holder.light,
+.post-holder.light .post,
+.post-holder.light .post-content {
+  background: var(--phish-light-bg);
+  color: var(--phish-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.site-title,
+.section-title,
+.post-title,
+.blog-title,
+.blog-description,
+.fixed-nav a,
+nav a,
+.menu a,
+a.btn,
+button,
+input[type="button"],
+input[type="submit"] {
+  font-family: "Siffon", sans-serif;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+p,
+li,
+small,
+figcaption,
+caption,
+input,
+textarea,
+select,
+label {
+  font-family: "NOW", sans-serif;
+  line-height: 1.7;
+}
+
+#site-head {
+  min-height: 100vh;
+}
+
+#site-head::before {
+  content: none;
+}
+
+#site-head .inner {
+  position: relative;
+  z-index: 2;
+}
+
+#blog-logo {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  width: min(46vw, 320px);
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
+#site-head-content {
+  align-items: flex-start;
+  text-align: left;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+.blog-title {
+  display: none;
+}
+
+.blog-description {
+  margin-top: 6rem;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 26ch;
+}
+
+.hero-inline-logo {
+  display: block;
+  width: min(60vw, 260px);
+  height: auto;
+  margin-bottom: 0.9rem;
+}
+
+.hero-cta-row {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+#site-head a.btn,
+a.btn.phish-cta,
+.post-content a.btn,
+a.btn.site-menu,
+a.btn {
+  border: 1px solid var(--phish-white);
+  color: var(--phish-white);
+  background: transparent;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  padding: 0.62rem 0.86rem;
+}
+
+#site-head a.btn,
+#site-head a.btn.site-menu,
+#site-head-content a.btn {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+#site-head-content > a.btn.site-menu {
+  display: none;
+}
+
+#site-head-content {
+  position: relative;
+}
+
+#header-arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 72%;
+  color: var(--phish-white);
+  font-size: 2rem;
+}
+
+.hero-image-cta {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 66%;
+}
+
+#site-head a.btn.hero-center-cta {
+  border: 2px solid var(--phish-white);
+  padding: 0.6rem 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: transparent;
+  color: var(--phish-white);
+  border-radius: 0;
+}
+
+#site-head a.btn.hero-center-cta:hover {
+  border-color: var(--phish-blue);
+  color: var(--phish-blue);
+}
+
+#site-head a.btn:hover,
+a.btn.phish-cta:hover,
+.post-content a.btn:hover,
+a.btn.site-menu:hover,
+a.btn:hover {
+  background: transparent;
+  color: var(--phish-blue);
+  border-color: var(--phish-blue);
+}
+
+.fixed-nav {
+  display: none;
+}
+
+.fixed-nav a {
+  color: var(--phish-white);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fixed-nav a:hover,
+.fixed-nav a.active {
+  color: var(--phish-green);
+}
+
+.fixed-nav a.active {
+  border-left: 2px solid var(--phish-green);
+  padding-left: 0.4rem;
+}
+
+.post-holder {
+  padding: 0;
+}
+
+.post-holder .post {
+  max-width: 100%;
+  width: 100%;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 6vw, 4rem);
+  margin: 0;
+}
+
+.post-header,
+.post-title {
+  margin-bottom: 0.85rem;
+}
+
+.post-title {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.post-content {
+  max-width: 100%;
+}
+
+.post-content p,
+.post-content li {
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+  line-height: 1.45;
+}
+
+.door-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.door-card {
+  border: 1px solid var(--phish-border);
+  min-height: 190px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: var(--phish-white);
+  background: transparent;
+}
+
+.door-card:hover {
+  border-color: var(--phish-green);
+  color: var(--phish-green);
+  background: transparent;
+}
+
+.door-label {
+  font-size: 1.08rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.door-copy {
+  font-size: 0.93rem;
+  color: var(--phish-white-soft);
+}
+
+.featured-strip {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.featured-strip img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.page-template .post.page {
+  max-width: 100%;
+  width: 100%;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.page-hero {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  max-height: min(72vh, 760px);
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.brand-stamp {
+  width: 56px;
+  height: auto;
+  opacity: 0.6;
+  margin: 1rem 0;
+}
+
+a,
+.post-content a,
+.post-holder .post-content a {
+  color: var(--phish-white);
+}
+
+a:hover,
+a:active,
+.post-content a:hover,
+.post-content a:active {
+  color: var(--phish-green);
+}
+
+.post-holder,
+.post-holder .post,
+.post-after,
+.post-header,
+.post-content,
+.footer {
+  border-color: var(--phish-border);
+}
+
+/* Micro manifesto image section */
+#micro-manifesto {
+  background-image: url("/images/phish-manifesto-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 68vh;
+  display: flex;
+  align-items: center;
+}
+
+#micro-manifesto .post-header {
+  display: none;
+}
+
+#micro-manifesto .post-content {
+  text-align: left;
+  max-width: min(50vw, 760px);
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .door-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #blog-logo {
+    width: min(58vw, 250px);
+  }
+
+  .blog-description {
+    margin-top: 5.2rem;
+  }
+}
+
+/* PHISH final brand color system override */
+:root {
+  /* Brand colours */
+  --phish-blue: #054467;
+  --phish-green: #7f896a;
+
+  /* Text colours */
+  --phish-white: #f4f6fc; /* text on dark */
+  --phish-text-dark: #327161; /* text on light */
+
+  /* Derived deep blacks from #054467 */
+  --phish-black: #0c1418; /* main background */
+  --phish-surface: #111c22; /* panels, subtle blocks */
+  --phish-elevated: #121f26; /* higher contrast surface */
+
+  /* UI neutrals */
+  --phish-border: rgba(244, 246, 252, 0.12);
+  --phish-muted: rgba(244, 246, 252, 0.78);
+}
+
+/* Default to dark */
+html,
+body {
+  background: var(--phish-black);
+  color: var(--phish-white);
+}
+
+/* Text hierarchy */
+p,
+li,
+small,
+label,
+input,
+textarea {
+  color: var(--phish-white);
+}
+
+.muted,
+.meta,
+.caption {
+  color: var(--phish-muted);
+}
+
+/* Links */
+a {
+  color: var(--phish-white);
+  text-decoration-color: rgba(244, 246, 252, 0.35);
+}
+
+a:hover,
+a:focus {
+  color: var(--phish-green);
+  text-decoration-color: var(--phish-green);
+}
+
+/* Borders and dividers */
+hr,
+.divider,
+.section-divider {
+  border-color: var(--phish-border);
+}
+
+/* Surfaces */
+.card,
+.panel,
+.section-panel {
+  background: var(--phish-surface);
+  border: 1px solid var(--phish-border);
+}
+
+/* Buttons */
+button,
+.btn,
+a.btn {
+  background: transparent;
+  color: var(--phish-white);
+  border: 1px solid var(--phish-border);
+  border-radius: 0;
+}
+
+button:hover,
+.btn:hover,
+a.btn:hover {
+  border-color: var(--phish-blue);
+  color: var(--phish-blue);
+}

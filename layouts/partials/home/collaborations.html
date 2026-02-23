@@ -1,0 +1,22 @@
+{{ $c := site.Data.home.collaborations }}
+<section class="section collaborations" id="collaborations" aria-labelledby="collab-title">
+  <div class="section-content">
+    <h2 id="collab-title">{{ $c.title }}</h2>
+    <p>{{ $c.intro }}</p>
+    <div class="logo-grid">
+      {{ range $c.items }}
+      {{ if .url }}
+      <a class="logo-item" href="{{ .url }}">
+        <img src="{{ .logo }}" alt="{{ .alt }}">
+        <span>{{ .name }}</span>
+      </a>
+      {{ else }}
+      <div class="logo-item">
+        <img src="{{ .logo }}" alt="{{ .alt }}">
+        <span>{{ .name }}</span>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>

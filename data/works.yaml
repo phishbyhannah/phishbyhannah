@@ -1,0 +1,113 @@
+---
+title: "Works"
+headline: "Campaign thinking, captured in motion."
+intro:
+  - "Strategy built into every frame."
+  - "Creative direction shaped by environment, instinct and brand intent."
+buckets:
+  - title: "Brand Campaigns"
+    teaser: "Editorial campaigns built in real environments."
+    hover: "From concept to campaign-ready assets, designed to move with your brand and hold up beyond the scroll."
+    lead: "Editorial storytelling and seasonal campaign production for brands shaped by the elements."
+    body: "This is where narrative meets direction. I translate brand identity into lived environments - building imagery that feels immersive, credible and intentional. Designed for product launches, seasonal collections and long-form storytelling."
+    includes:
+      - "Campaign alignment session"
+      - "Concept and shoot framework"
+      - "Content pillar mapping"
+      - "Shot list aligned with objectives"
+      - "1-3 day production block"
+      - "Curated campaign-ready asset library"
+      - "Vertical and digital-ready formats"
+      - "Usage guidance document"
+    cta_label: "Discuss your project ->"
+    cta_url: "/contact/"
+    image: "works-brand-campaigns.jpg"
+    image_alt: "Brand campaign background"
+
+  - title: "Strategic Content Partnerships"
+    signature: true
+    teaser: "A structured visual system for brands that need consistency."
+    hover: "Batch-produced, pillar-driven content aligned with campaign goals and built for sustained digital presence."
+    lead: "Ongoing campaign support for brands who need structure, consistency and intention behind their content."
+    body:
+      - "This is not social media management."
+      - "It is a strategic content system."
+      - "Designed for brands running frequent launches or requiring sustained digital presence without building internal production teams."
+      - "Limited to four partnerships per season."
+    formats_heading: "Two formats available:"
+    formats:
+      - title: "Quarterly Intensive"
+        items:
+          - "Campaign alignment session"
+          - "2-3 day immersive production block"
+          - "24 curated campaign-ready assets"
+          - "Content pillar mapping"
+          - "Structured sequencing guide"
+      - title: "Bi-Annual Series"
+        items:
+          - "Campaign alignment session"
+          - "1-2 day production block"
+          - "24 evergreen assets delivered across six months"
+          - "Content pillar mapping"
+          - "Usage guide"
+    pillars_heading: "Content pillars"
+    pillars:
+      - "Function in Motion"
+      - "Immersive Lifestyle"
+      - "Authority and Education"
+      - "Environment and Context"
+      - "Human Connection"
+    closing:
+      - "The outcome is not a folder of images."
+      - "It is a usable visual framework."
+    cta_label: "Discuss your project ->"
+    cta_url: "/contact/"
+    image: "works-strategic-partnerships.jpg"
+    image_alt: "Strategic content background"
+
+  - title: "Destination and Place Partnerships"
+    teaser: "Immersive storytelling rooted in place."
+    hover: "Field-based regional narratives shaped by access, environment and lived experience."
+    lead: "Boutique collaborations with regional and destination partners."
+    body: "This work focuses on immersive storytelling rooted in place - capturing atmosphere, scale and lived experience. Designed for regional campaigns and location-based ventures seeking authentic environmental narrative."
+    includes:
+      - "Campaign alignment session"
+      - "Regional storytelling framework"
+      - "Multi-day immersive production"
+      - "Hero imagery and supporting assets"
+      - "Digital-ready formats"
+      - "Usage guidance"
+    closing:
+      - "Built through access, time and trust."
+    cta_label: "Discuss your project ->"
+    cta_url: "/contact/"
+    image: "works-destination-partnerships.jpg"
+    image_alt: "Destination and place partnership background"
+
+process:
+  title: "How it works"
+  blocks:
+    - title: "Before the Image"
+      text: "We align on brand direction, campaign objectives and environment."
+    - title: "In the Field"
+      text: "Production shaped by movement, function and real context."
+    - title: "After the Capture"
+      text: "Assets curated through five content pillars: Function in Motion, Immersive Lifestyle, Authority and Education, Environment and Context, Human Connection."
+    - title: "Into Campaign"
+      text: "Delivered with usage guidance and sequencing support."
+
+gallery:
+  enabled: true
+  title: "Works Gallery"
+  intro: "A visual sweep across campaign, field, and place-led collaborations."
+  items:
+    - image: "works-gallery-01.jpg"
+      alt: "Campaign visual"
+      caption: "Campaign narrative in motion"
+    - image: "works-gallery-02.jpg"
+      alt: "Field-led visual"
+      caption: "Production in live environments"
+    - image: "works-gallery-03.jpg"
+      alt: "Destination visual"
+      caption: "Place-based storytelling"
+---

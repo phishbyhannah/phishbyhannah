@@ -1,0 +1,7 @@
+{{ $d := .data }}
+<section class="works-intro-block" aria-labelledby="works-intro-title">
+  <div class="works-shell works-intro-copy">
+    <h2 id="works-intro-title" class="works-section-title">Works</h2>
+    {{ range $d.intro }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>

@@ -1,0 +1,27 @@
+{{ $hero := .Params.hero }}
+{{ $heroImage := "" }}
+{{ with .Params.header_image }}
+  {{ with $.Resources.GetMatch . }}
+    {{ $heroImage = .RelPermalink }}
+  {{ else }}
+    {{ $heroImage = . }}
+  {{ end }}
+{{ end }}
+<section id="{{ $hero.id }}" class="field-section field-hero tone-dark">
+  {{ with $heroImage }}<img class="field-bg" src="{{ . }}" alt="Field hero background" loading="eager" fetchpriority="high">{{ end }}
+  {{ if $hero.overlay }}<div class="field-overlay"></div>{{ end }}
+  <div class="field-wrap field-hero-inner">
+    <h1>{{ $hero.title }}</h1>
+    <p>{{ $hero.subtitle }}</p>
+    {{ with $hero.body }}
+    <div class="field-hero-body">
+      {{ range . }}<p>{{ . }}</p>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+  {{ with $hero.nav }}
+  <nav class="field-anchor-nav" aria-label="Field sections">
+    {{ range . }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
+  </nav>
+  {{ end }}
+</section>

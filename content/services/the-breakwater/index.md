@@ -22,7 +22,7 @@ A step up from The Current, adding branded graphic carousels for guides, FAQs, a
 
 For pricing, availability, and the right fit, please enquire.
 
-{{< button href="/contact/" >}}Enquire{{< /button >}}
+<a class="btn phish-cta" href="/contact/">Enquire</a>
 
 ## Best for
 

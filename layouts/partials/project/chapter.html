@@ -1,0 +1,99 @@
+{{ $chapter := . }}
+{{ range $idx, $block := $chapter.Params.blocks }}
+  {{ if eq $block.type "divider" }}
+  <section class="post-holder{{ if modBool $idx 2 }} light{{ else }} dark{{ end }} project-divider-holder">
+    <article class="post project-divider-post">
+      <header class="post-header">
+        <h2 class="post-title">{{ $block.title }}</h2>
+      </header>
+      <section class="post-content project-divider-sub">
+        {{ range $block.subtitle_lines }}<p>{{ . }}</p>{{ end }}
+      </section>
+    </article>
+  </section>
+  {{ end }}
+
+  {{ if eq $block.type "fullbleed" }}
+  {{ $img := "" }}
+  {{ with $block.image }}
+    {{ with $chapter.Resources.GetMatch . }}
+      {{ $img = .RelPermalink }}
+    {{ else }}
+      {{ $img = . }}
+    {{ end }}
+  {{ end }}
+  <section class="post-holder dark project-fullbleed-holder">
+    <figure class="project-fullbleed-figure">
+      <img src="{{ $img }}" alt="{{ $block.alt }}" loading="lazy">
+      {{ with $block.caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+  </section>
+  {{ end }}
+
+  {{ if eq $block.type "stagger2" }}
+  {{ $left := "" }}
+  {{ with $block.left_image }}
+    {{ with $chapter.Resources.GetMatch . }}
+      {{ $left = .RelPermalink }}
+    {{ else }}
+      {{ $left = . }}
+    {{ end }}
+  {{ end }}
+  {{ $right := "" }}
+  {{ with $block.right_image }}
+    {{ with $chapter.Resources.GetMatch . }}
+      {{ $right = .RelPermalink }}
+    {{ else }}
+      {{ $right = . }}
+    {{ end }}
+  {{ end }}
+  <section class="post-holder light project-stagger-holder">
+    <div class="project-stagger-grid">
+      <figure class="project-stagger-item project-stagger-left">
+        <img src="{{ $left }}" alt="{{ $block.left_alt }}" loading="lazy">
+      </figure>
+      <figure class="project-stagger-item project-stagger-right">
+        <img src="{{ $right }}" alt="{{ $block.right_alt }}" loading="lazy">
+      </figure>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ if eq $block.type "grid3" }}
+  <section class="post-holder dark project-grid-holder">
+    <div class="project-grid3">
+      {{ range $block.images }}
+      {{ $grid := "" }}
+      {{ with .image }}
+        {{ with $chapter.Resources.GetMatch . }}
+          {{ $grid = .RelPermalink }}
+        {{ else }}
+          {{ $grid = . }}
+        {{ end }}
+      {{ end }}
+      <figure class="project-grid3-item">
+        <img src="{{ $grid }}" alt="{{ .alt }}" loading="lazy">
+      </figure>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ if eq $block.type "breath" }}
+  {{ $breath := "" }}
+  {{ with $block.image }}
+    {{ with $chapter.Resources.GetMatch . }}
+      {{ $breath = .RelPermalink }}
+    {{ else }}
+      {{ $breath = . }}
+    {{ end }}
+  {{ end }}
+  <section class="post-holder{{ if eq $block.style "small" }} light{{ else }} dark{{ end }} project-breath-holder project-breath-{{ $block.style }}">
+    {{ if eq $block.style "small" }}
+    <figure class="project-breath-small">
+      <img src="{{ $breath }}" alt="{{ $block.alt }}" loading="lazy">
+    </figure>
+    {{ end }}
+  </section>
+  {{ end }}
+{{ end }}

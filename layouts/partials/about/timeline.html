@@ -1,0 +1,18 @@
+{{ $section := .section }}
+<section id="{{ $section.id }}" class="about-section about-direction about-dark{{ if $section.bg_image }} about-has-bg{{ end }}">
+  {{ if $section.bg_image }}<img class="about-section-bg" src="{{ $section.bg_image }}" alt="{{ $section.title }} background" loading="lazy">{{ end }}
+  {{ if $section.overlay }}<div class="about-section-overlay"></div>{{ end }}
+  <div class="about-wrap">
+    <h2>{{ $section.title }}</h2>
+    <div class="about-direction-grid">
+      <article class="about-direction-col">
+        <h3>{{ $section.now_title }}</h3>
+        {{ range $section.now_items }}<p>{{ . }}</p>{{ end }}
+      </article>
+      <article class="about-direction-col">
+        <h3>{{ $section.next_title }}</h3>
+        {{ range $section.next_items }}<p>{{ . }}</p>{{ end }}
+      </article>
+    </div>
+  </div>
+</section>

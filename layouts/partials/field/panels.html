@@ -1,0 +1,52 @@
+{{ $panels := .Params.panels }}
+{{ $tone := cond (eq $panels.tone "light") "tone-light" "tone-dark" }}
+{{ $bgImage := "" }}
+{{ with $panels.bg_image }}
+  {{ with $.Resources.GetMatch . }}
+    {{ $bgImage = .RelPermalink }}
+  {{ else }}
+    {{ $bgImage = . }}
+  {{ end }}
+{{ end }}
+<section id="{{ $panels.id }}" class="field-section field-panels {{ $tone }}">
+  {{ with $bgImage }}<img class="field-bg" src="{{ . }}" alt="Field panels background" loading="lazy">{{ end }}
+  {{ if $panels.overlay }}<div class="field-overlay"></div>{{ end }}
+  <div class="field-wrap">
+    <div class="field-panel-grid">
+      {{ range $index, $item := $panels.items }}
+      {{ $pid := printf "field-panel-%d" (add $index 1) }}
+      {{ $isOpen := eq $index 0 }}
+      {{ $itemBg := "" }}
+      {{ with $item.bg_image }}
+        {{ with $.Resources.GetMatch . }}
+          {{ $itemBg = .RelPermalink }}
+        {{ else }}
+          {{ $itemBg = . }}
+        {{ end }}
+      {{ end }}
+      <article class="field-panel-card{{ if $itemBg }} has-bg{{ end }}{{ if $isOpen }} is-open{{ end }}" data-panel-body="{{ $pid }}" id="{{ printf "field-card-%d" (add $index 1) }}">
+        {{ with $itemBg }}<img class="field-panel-bg" src="{{ . }}" alt="{{ $item.title }} background" loading="lazy">{{ end }}
+        <header class="field-panel-head">
+          <h2>{{ $item.title }}</h2>
+          <span class="field-status-pill">{{ $item.status }}</span>
+        </header>
+        <p class="field-panel-teaser">{{ $item.teaser }}</p>
+        {{ with $item.hover_line }}<p class="field-panel-hoverline" aria-hidden="true">{{ . }}</p>{{ end }}
+        <button class="field-panel-toggle" type="button" aria-expanded="{{ if $isOpen }}true{{ else }}false{{ end }}" aria-controls="{{ $pid }}">{{ if $isOpen }}Hide details{{ else }}View details{{ end }}</button>
+        <div id="{{ $pid }}" class="field-panel-body"{{ if not $isOpen }} hidden{{ end }}>
+          {{ with $item.expanded_text }}<p>{{ . }}</p>{{ end }}
+          {{ range $item.body }}<p>{{ . }}</p>{{ end }}
+          {{ with $item.bullets }}
+          <ul class="field-list">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{ end }}
+          {{ with $item.closing }}<p>{{ . }}</p>{{ end }}
+          {{ with $item.micro_cta }}<p class="field-panel-micro">{{ . }}</p>{{ end }}
+          {{ if and $item.cta_label $item.cta_link }}<p><a class="field-soft-cta" href="{{ $item.cta_link }}">{{ $item.cta_label }}</a></p>{{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{{ $w := site.Data.home.works_expanded }}
+<section class="section works-expanded" id="works-expanded" aria-labelledby="works-expanded-title">
+  <img class="section-bg" src="{{ $w.image }}" alt="{{ $w.image_alt }}" loading="lazy">
+  <div class="section-overlay"></div>
+  <div class="section-content">
+    <h2 id="works-expanded-title">{{ $w.title }}</h2>
+    <p class="lead">{{ $w.lead }}</p>
+    <p>{{ $w.body }}</p>
+    <ul>
+      {{ range $w.bullets }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    <p><a class="text-cta" href="{{ $w.cta_url }}">{{ $w.cta_text }} -></a></p>
+  </div>
+</section>

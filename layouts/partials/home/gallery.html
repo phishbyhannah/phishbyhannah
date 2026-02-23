@@ -1,0 +1,15 @@
+{{ $g := site.Data.home.gallery }}
+<section class="section gallery" aria-labelledby="gallery-title">
+  <div class="section-header">
+    <h2 id="gallery-title">{{ $g.title }}</h2>
+    <p>{{ $g.intro }}</p>
+  </div>
+  <div class="gallery-strip" role="region" aria-label="Scrolling gallery">
+    {{ range $g.images }}
+    <a class="gallery-item" href="{{ .url }}">
+      <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+    </a>
+    {{ end }}
+  </div>
+  <p><a class="text-cta" href="{{ $g.cta_url }}">{{ $g.cta_text }} -></a></p>
+</section>

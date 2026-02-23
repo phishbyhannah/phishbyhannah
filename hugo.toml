@@ -1,1 +1,7 @@
-# Root config is kept minimal; main config lives in config/_default/*.toml
+baseURL = "https://phishbyhannah.com"
+languageCode = "en-au"
+title = "PHISH"
+
+[params]
+  title = "PHISH"
+  description = "People in places, above and below the surface."

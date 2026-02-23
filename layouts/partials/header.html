@@ -1,0 +1,5 @@
+{{ partial "nav.html" . }}
+{{ $journeyPages := slice "/project/" "/works/" "/field/" "/about/" "/contact/" }}
+{{ if in $journeyPages .RelPermalink }}
+  {{ partial "journey/arrows.html" . }}
+{{ end }}

@@ -1,0 +1,22 @@
+{{ $p := site.Data.home.pillars }}
+<section class="section pillars" aria-labelledby="pillars-title">
+  <div class="section-header">
+    <h2 id="pillars-title">{{ $p.title }}</h2>
+  </div>
+  <div class="pillar-grid">
+    {{ range $p.items }}
+    <article class="pillar-card" id="{{ .id }}">
+      <a class="pillar-link" href="{{ .cta_url }}">
+        <img src="{{ .image }}" alt="{{ .image_alt }}" loading="lazy">
+        <div class="pillar-overlay"></div>
+        <div class="pillar-copy">
+          <h3>{{ .name }}</h3>
+          <p class="one-liner">{{ .one_liner }}</p>
+          <p>{{ .body }}</p>
+          <span class="text-cta">{{ .cta_text }} -></span>
+        </div>
+      </a>
+    </article>
+    {{ end }}
+  </div>
+</section>

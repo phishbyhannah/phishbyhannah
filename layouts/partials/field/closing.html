@@ -1,0 +1,43 @@
+{{ $c := .Params.closing }}
+{{ $tone := cond (eq $c.tone "light") "tone-light" "tone-dark" }}
+{{ $bgImage := "" }}
+{{ with $c.bg_image }}
+  {{ with $.Resources.GetMatch . }}
+    {{ $bgImage = .RelPermalink }}
+  {{ else }}
+    {{ $bgImage = . }}
+  {{ end }}
+{{ end }}
+{{ with $c.gallery }}
+<section class="field-section field-closing-gallery {{ $tone }}" aria-label="Field closing gallery">
+  <div class="field-closing-gallery-track">
+    {{ range . }}
+    <figure class="field-closing-gallery-item">
+      <img src="{{ .image }}" alt="{{ .alt }}" loading="lazy">
+    </figure>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+<section id="{{ $c.id }}" class="field-section field-closing {{ $tone }}">
+  {{ with $bgImage }}<img class="field-bg" src="{{ . }}" alt="Field closing background" loading="lazy">{{ end }}
+  {{ if $c.overlay }}<div class="field-overlay"></div>{{ end }}
+  <div class="field-wrap field-narrow">
+    {{ with $c.title }}<h2>{{ . }}</h2>{{ end }}
+    {{ range $c.paragraphs }}<p>{{ . }}</p>{{ end }}
+    <p><a class="field-soft-cta" href="{{ $c.cta_link }}">{{ $c.cta_label }}</a></p>
+  </div>
+</section>
+{{ with $c.image_below }}
+<section class="field-section field-closing-image {{ $tone }}">
+  <img src="{{ . }}" alt="Field closing image" loading="lazy">
+  <div class="field-launching-overlay">
+    <p class="field-launching-eyebrow">Launching 2026</p>
+    <div class="field-launching-actions" role="navigation" aria-label="Jump to coming soon panels">
+      <button class="field-launching-btn" type="button" data-open-panel="field-panel-1">Tonga Expedition</button>
+      <button class="field-launching-btn" type="button" data-open-panel="field-panel-2">Classroom Education</button>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ partial "field/panels.html" . }}

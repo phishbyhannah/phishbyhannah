@@ -1,0 +1,26 @@
+{{ $hero := .Params.hero }}
+{{ $heroImage := "" }}
+{{ with $hero.bg_image }}
+  {{ with $.Resources.GetMatch . }}
+    {{ $heroImage = .RelPermalink }}
+  {{ else }}
+    {{ $heroImage = . }}
+  {{ end }}
+{{ end }}
+<section id="{{ $hero.id }}" class="post-holder dark contact-hero-holder">
+  {{ with $heroImage }}<img class="contact-hero-bg" src="{{ . }}" alt="Contact hero background" loading="eager" fetchpriority="high">{{ end }}
+  {{ if $hero.overlay }}<div class="contact-hero-overlay"></div>{{ end }}
+  <a class="contact-hero-letters" href="/" aria-label="Go to home page">
+    <img src="/images/hero/phish-heroimage-Phishletters-people.png" alt="PHISH letters people" loading="lazy">
+  </a>
+  <article class="post contact-hero-inner contact-reveal">
+    {{ with $hero.title }}
+    <header class="post-header">
+      <h1 class="post-title">{{ . }}</h1>
+    </header>
+    {{ end }}
+    <section class="post-content">
+      {{ range $hero.body_lines }}<p>{{ . }}</p>{{ end }}
+    </section>
+  </article>
+</section>

@@ -1,0 +1,29 @@
+{{ if eq .Section "works" }}
+  {{ with resources.Get "js/works.js" }}
+  {{ $worksJS := . | minify | fingerprint }}
+  <script defer src="{{ $worksJS.RelPermalink }}" integrity="{{ $worksJS.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+{{ if eq .Section "field" }}
+  {{ with resources.Get "js/field.js" }}
+  {{ $fieldJS := . | minify | fingerprint }}
+  <script defer src="{{ $fieldJS.RelPermalink }}" integrity="{{ $fieldJS.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+{{ if or (eq .Section "contact") (eq .Type "contact") (eq .RelPermalink "/contact/") }}
+  {{ with resources.Get "js/contact.js" }}
+  {{ $contactJS := . | minify | fingerprint }}
+  <script defer src="{{ $contactJS.RelPermalink }}" integrity="{{ $contactJS.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+{{ $journeyPages := slice "/project/" "/works/" "/field/" "/about/" "/contact/" }}
+{{ if in $journeyPages .RelPermalink }}
+  {{ with resources.Get "js/journey.js" }}
+  {{ $journeyJS := . | minify | fingerprint }}
+  <script defer src="{{ $journeyJS.RelPermalink }}" integrity="{{ $journeyJS.Data.Integrity }}"></script>
+  {{ end }}
+{{ end }}
+{{ with resources.Get "js/main.js" }}
+  {{ $mainJS := . | minify | fingerprint }}
+  <script defer src="{{ $mainJS.RelPermalink }}" integrity="{{ $mainJS.Data.Integrity }}"></script>
+{{ end }}

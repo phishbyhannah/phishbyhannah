@@ -1,0 +1,81 @@
+{{ define "main" }}
+<main class="about-journey">
+  {{ partial "about/hero.html" (dict "page" . "section" .Params.hero) }}
+
+  {{ with .Params.opener }}
+  <section id="{{ .id }}" class="about-section about-opener about-light{{ if .bg_image }} about-has-bg{{ end }}">
+    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Opener background" loading="lazy">{{ end }}
+    {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
+    <div class="about-wrap about-opener-layout">
+      {{ with .images }}
+      <div class="about-opener-grid" aria-label="Perth hospitality journey photos">
+        {{ range first 6 . }}
+        <figure class="about-opener-grid-item">
+          <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+        </figure>
+        {{ end }}
+      </div>
+      {{ end }}
+      <div class="about-opener-copy">
+        {{ range .lines }}<p>{{ . }}</p>{{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ partial "about/split.html" (dict "page" . "section" .Params.perth_to_ningaloo) }}
+  {{ partial "about/quote.html" (dict "page" . "section" .Params.quote_panel) }}
+
+  {{ with .Params.whale_shark_story }}
+  <section id="{{ .id }}" class="about-section about-image-story about-dark{{ if .bg_image }} about-has-bg{{ end }}">
+    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="{{ .title }} background" loading="lazy">{{ end }}
+    {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
+    <div class="about-image-story-media">
+      <img src="{{ with .image }}{{ . }}{{ else }}{{ .bg_image }}{{ end }}" alt="{{ .image_alt }}" loading="lazy">
+      {{ with .caption }}<p class="about-micro-caption">{{ . }}</p>{{ end }}
+    </div>
+    <div class="about-wrap about-narrow">
+      <h2>{{ .title }}</h2>
+      {{ range .body }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.gratitude_panel }}
+  <section id="{{ .id }}" class="about-section about-gratitude about-dark{{ if .bg_image }} about-has-bg{{ end }}">
+    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Gratitude section background" loading="lazy">{{ end }}
+    {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
+    <div class="about-wrap about-narrow">
+      <p>{{ .text }}</p>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ partial "about/cards.html" (dict "page" . "section" .Params.what_i_do) }}
+  {{ partial "about/process.html" (dict "page" . "section" .Params.process) }}
+  {{ partial "about/strip.html" (dict "page" . "section" .Params.reality_check) }}
+
+  {{ with .Params.responsibility }}
+  <section id="{{ .id }}" class="about-section about-responsibility about-dark{{ if .bg_image }} about-has-bg{{ end }}">
+    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Responsibility background" loading="lazy">{{ end }}
+    {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
+    <div class="about-wrap about-narrow about-responsibility-copy">
+      <p>{{ .text }}</p>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ partial "about/timeline.html" (dict "page" . "section" .Params.direction) }}
+
+  {{ with .Params.final_cta }}
+  <section id="{{ .id }}" class="about-section about-final-cta about-light{{ if .bg_image }} about-has-bg{{ end }}">
+    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Final CTA background" loading="lazy">{{ end }}
+    {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
+    <div class="about-wrap about-narrow">
+      <h2>{{ .text }}</h2>
+      <p><a class="about-soft-cta" href="{{ .cta_url }}">{{ .cta_label }}</a></p>
+    </div>
+  </section>
+  {{ end }}
+</main>
+{{ end }}

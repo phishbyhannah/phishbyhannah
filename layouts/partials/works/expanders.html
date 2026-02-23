@@ -1,0 +1,90 @@
+{{ $page := . }}
+{{ $buckets := .Params.buckets }}
+<section class="section works-expanders" aria-labelledby="works-services-title">
+  <div class="section-content">
+    <h2 id="works-services-title" class="sr-only">Services</h2>
+    <div class="works-expander-list">
+      {{ range $index, $bucket := $buckets }}
+      {{ $bucketID := printf "works-bucket-%d" (add $index 1) }}
+      {{ $imgPath := "" }}
+      {{ $imgCollapsed := "" }}
+      {{ $imgExpanded := "" }}
+      {{ $bgPos := default "50% 50%" $bucket.bg_position }}
+      {{ $bgPosCollapsed := default $bgPos $bucket.bg_position_collapsed }}
+      {{ $bgPosExpanded := default $bgPos $bucket.bg_position_expanded }}
+      {{ with $bucket.image }}
+        {{ with $page.Resources.GetMatch . }}
+          {{ $imgPath = .RelPermalink }}
+        {{ else }}
+          {{ $imgPath = . }}
+        {{ end }}
+      {{ end }}
+      {{ with $bucket.image_collapsed }}
+        {{ with $page.Resources.GetMatch . }}
+          {{ $imgCollapsed = .RelPermalink }}
+        {{ else }}
+          {{ $imgCollapsed = . }}
+        {{ end }}
+      {{ end }}
+      {{ with $bucket.image_expanded }}
+        {{ with $page.Resources.GetMatch . }}
+          {{ $imgExpanded = .RelPermalink }}
+        {{ else }}
+          {{ $imgExpanded = . }}
+        {{ end }}
+      {{ end }}
+      {{ $collapsedImg := default $imgPath $imgCollapsed }}
+      {{ $expandedImg := default $collapsedImg $imgExpanded }}
+      <article class="works-card{{ if $bucket.signature }} works-card-signature{{ end }}"{{ if or $imgPath (or $imgCollapsed $imgExpanded) }} style="--works-card-bg:url('{{ $imgPath }}'); --works-card-bg-collapsed:url('{{ $collapsedImg }}'); --works-card-bg-expanded:url('{{ $expandedImg }}'); --works-card-pos: {{ $bgPos }}; --works-card-pos-collapsed: {{ $bgPosCollapsed }}; --works-card-pos-expanded: {{ $bgPosExpanded }};"{{ end }}>
+        <div class="works-card-overlay"></div>
+        <div class="works-card-top">
+          <h3>{{ $bucket.title }}</h3>
+          <p class="works-card-teaser">{{ $bucket.teaser }}</p>
+        </div>
+        {{ with $bucket.hover }}<p class="works-hover-copy">{{ . }}</p>{{ end }}
+        <button class="works-toggle" type="button" aria-expanded="false" aria-controls="{{ $bucketID }}">
+          View details
+        </button>
+        <div id="{{ $bucketID }}" class="works-panel" hidden>
+          {{ with $bucket.lead }}<p class="works-panel-lead">{{ . }}</p>{{ end }}
+          {{ with $bucket.body }}
+            {{ if reflect.IsSlice . }}
+              {{ range . }}<p>{{ . }}</p>{{ end }}
+            {{ else }}
+              <p>{{ . }}</p>
+            {{ end }}
+          {{ end }}
+          {{ with $bucket.includes }}
+          <ul class="works-list">
+            {{ range . }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{ end }}
+          {{ with $bucket.formats_heading }}<h4>{{ . }}</h4>{{ end }}
+          {{ with $bucket.formats }}
+          <div class="works-formats">
+            {{ range . }}
+            <section class="works-format">
+              <h5>{{ .title }}</h5>
+              <ul class="works-list">
+                {{ range .items }}<li>{{ . }}</li>{{ end }}
+              </ul>
+            </section>
+            {{ end }}
+          </div>
+          {{ end }}
+          {{ with $bucket.pillars_heading }}<h4>{{ . }}</h4>{{ end }}
+          {{ with $bucket.pillars }}
+          <div class="works-pillars">
+            {{ range . }}<span>{{ . }}</span>{{ end }}
+          </div>
+          {{ end }}
+          {{ with $bucket.closing }}
+            {{ range . }}<p>{{ . }}</p>{{ end }}
+          {{ end }}
+          <p><a class="works-cta" href="/contact/">Discuss your project →</a></p>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

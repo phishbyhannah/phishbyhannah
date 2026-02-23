@@ -24,7 +24,7 @@ An elevated package designed for brands that want to educate, inform, and engage
 
 For pricing, availability, and the right fit, please enquire.
 
-{{< button href="/contact/" >}}Enquire{{< /button >}}
+<a class="btn phish-cta" href="/contact/">Enquire</a>
 
 ## Best for
 

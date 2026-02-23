@@ -23,7 +23,7 @@ A growth-focused tier that blends strong visuals with the reach-power of reels â
 
 For pricing, availability, and the right fit, please enquire.
 
-{{< button href="/contact/" >}}Enquire{{< /button >}}
+<a class="btn phish-cta" href="/contact/">Enquire</a>
 
 ## Best for
 

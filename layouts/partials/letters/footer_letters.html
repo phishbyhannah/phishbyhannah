@@ -1,0 +1,40 @@
+{{ $img := "" }}
+{{ $alt := "PHISH letters" }}
+{{ $label := "Go to home page" }}
+{{ $href := "/" }}
+
+{{ if .IsHome }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-animals.png" }}
+  {{ $alt = "PHISH letters with animals" }}
+  {{ $label = "Go to contact page" }}
+  {{ $href = "/contact/" }}
+{{ else if eq .RelPermalink "/works/" }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-people2.png" }}
+  {{ $alt = "PHISH letters people" }}
+{{ else if eq .RelPermalink "/project/" }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-placewater.png" }}
+  {{ $alt = "PHISH letters placewater" }}
+{{ else if eq .RelPermalink "/field/" }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-place.png" }}
+  {{ $alt = "PHISH letters place" }}
+{{ else if eq .RelPermalink "/about/" }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-clownfish.png" }}
+  {{ $alt = "PHISH letters clownfish" }}
+{{ else if eq .RelPermalink "/contact/" }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-people.png" }}
+  {{ $alt = "PHISH letters people" }}
+{{ else }}
+  {{ $img = "/images/hero/phish-heroimage-Phishletters-animals.png" }}
+  {{ $alt = "PHISH letters animals" }}
+{{ end }}
+
+{{ if ne .RelPermalink "/contact/" }}
+<section class="section letters-animals letters-footer" aria-label="PHISH letters image">
+  <div class="section-content letters-animals-title-wrap">
+    <h2 class="letters-animals-title">Contact</h2>
+  </div>
+  <a class="letters-animals-link" href="{{ $href }}" aria-label="{{ $label }}">
+    <img class="section-bg" src="{{ $img }}" alt="{{ $alt }}" loading="lazy">
+  </a>
+</section>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ $section := .section }}
+<section id="{{ $section.id }}" class="about-section about-hero about-dark{{ if $section.bg_image }} about-has-bg{{ end }}">
+  {{ if $section.bg_image }}<img class="about-section-bg" src="{{ $section.bg_image }}" alt="About hero background" loading="eager" fetchpriority="high">{{ end }}
+  {{ if $section.overlay }}<div class="about-section-overlay"></div>{{ end }}
+  <div class="about-wrap about-hero-inner">
+    {{ with $section.greeting }}<p class="about-hero-handwriting">{{ . }}</p>{{ end }}
+    <h1>{{ $section.title }}</h1>
+    <p class="about-hero-subline">{{ $section.subline }}</p>
+  </div>
+  {{ with $section.nav }}
+  <nav class="about-hero-nav" aria-label="About page sections">
+    {{ range . }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
+  </nav>
+  {{ end }}
+</section>

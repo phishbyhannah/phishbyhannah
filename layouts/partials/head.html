@@ -1,0 +1,43 @@
+{{ $journeyPages := slice "/project/" "/works/" "/field/" "/about/" "/contact/" }}
+{{ $showJourney := in $journeyPages .RelPermalink }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ partial "custom_head.html" . }}
+{{ if eq .Section "works" }}
+  {{ with resources.Get "css/works.css" }}
+  {{ $worksCSS := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $worksCSS.RelPermalink }}" integrity="{{ $worksCSS.Data.Integrity }}">
+  {{ end }}
+{{ end }}
+{{ with resources.Get "css/nav.css" }}
+{{ $navCSS := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $navCSS.RelPermalink }}" integrity="{{ $navCSS.Data.Integrity }}">
+{{ end }}
+{{ if $showJourney }}
+{{ with resources.Get "css/journey.css" }}
+{{ $journeyCSS := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $journeyCSS.RelPermalink }}" integrity="{{ $journeyCSS.Data.Integrity }}">
+{{ end }}
+{{ end }}
+{{ if eq .Section "field" }}
+{{ with resources.Get "css/field.css" }}
+{{ $fieldCSS := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $fieldCSS.RelPermalink }}" integrity="{{ $fieldCSS.Data.Integrity }}">
+{{ end }}
+{{ end }}
+{{ if eq .Section "project" }}
+{{ with resources.Get "css/project.css" }}
+{{ $projectCSS := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $projectCSS.RelPermalink }}" integrity="{{ $projectCSS.Data.Integrity }}">
+{{ end }}
+{{ end }}
+{{ if or (eq .Section "contact") (eq .Type "contact") (eq .RelPermalink "/contact/") }}
+{{ with resources.Get "css/contact.css" }}
+{{ $contactCSS := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $contactCSS.RelPermalink }}" integrity="{{ $contactCSS.Data.Integrity }}">
+{{ end }}
+{{ end }}

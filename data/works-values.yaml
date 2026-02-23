@@ -1,0 +1,30 @@
+values:
+  - title: "FUNCTION IN MOTION"
+    description: "Demonstrates product performance in real environments. Built to prove durability, credibility and trust."
+    image: "value-function.jpg"
+    alt: "Product used in active marine environment"
+
+  - title: "IMMERSIVE LIFESTYLE"
+    description: "Sells the emotional outcome of the experience. Atmosphere, aspiration and lived-in authenticity."
+    image: "value-lifestyle.jpg"
+    alt: "Immersive lifestyle moment in natural environment"
+
+  - title: "AUTHORITY AND EDUCATION"
+    description: "Builds brand trust through competence, leadership and real field experience."
+    image: "value-authority.jpg"
+    alt: "Guide leading experience in marine environment"
+
+  - title: "ENVIRONMENT AND SCALE"
+    description: "Provides context and cinematic weight. Elevates campaigns beyond product into place."
+    image: "value-scale.jpg"
+    alt: "Wide environmental landscape with human scale"
+
+  - title: "HUMAN CONNECTION"
+    description: "Captures shared experience and emotional connection that drives engagement."
+    image: "value-connection.jpg"
+    alt: "Human connection moment in outdoor environment"
+
+  - title: "NARRATIVE DETAIL"
+    description: "Textural, intimate moments that create cohesion across a campaign."
+    image: "value-detail.jpg"
+    alt: "Close detail of gear or hands in environment"
