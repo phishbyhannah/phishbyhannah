@@ -1,6 +1,9 @@
 {{ $h := site.Data.home.hero }}
 <section class="section hero" id="top" aria-labelledby="hero-title">
-  <img class="hero-bg" src="{{ $h.image }}" alt="{{ $h.image_alt }}" loading="eager" fetchpriority="high">
+  <picture>
+    <source media="(max-width: 760px)" srcset="/images/hero/phish-heroimage-home-mobile.png">
+    <img class="hero-bg" src="{{ $h.image }}" alt="{{ $h.image_alt }}" loading="eager" fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 id="hero-title">{{ $h.title }}</h1>

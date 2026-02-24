@@ -1,1 +1,26 @@
-<footer class="site-footer" aria-label="Site footer"></footer>
+{{ $links := slice
+  (dict "href" "/" "label" "Home")
+  (dict "href" "/project/" "label" "The Project")
+  (dict "href" "/works/" "label" "Works")
+  (dict "href" "/field/" "label" "Field")
+  (dict "href" "/about/" "label" "Who is PHISH")
+  (dict "href" "/contact/" "label" "Contact")
+  (dict "href" "/copyright/" "label" "Image Copyright")
+}}
+<footer class="site-footer" aria-label="Site footer navigation">
+  <p class="site-footer-title">MOTION CAPTURED.</p>
+  <nav class="site-footer-nav" aria-label="Footer links">
+    <a href="/" class="site-footer-home-icon" aria-label="Home">
+      <img src="/brand/phish-logo-whitetp.png" alt="" aria-hidden="true" loading="lazy">
+    </a>
+    {{ range $links }}
+    {{ $isActive := false }}
+    {{ if and $.IsHome (eq .href "/") }}{{ $isActive = true }}{{ end }}
+    {{ if and (not $.IsHome) (eq $.RelPermalink .href) }}{{ $isActive = true }}{{ end }}
+    <a href="{{ .href }}"{{ if $isActive }} class="is-active" aria-current="page"{{ end }}>{{ .label }}</a>
+    {{ end }}
+    <a href="/" class="site-footer-home-icon" aria-label="Home">
+      <img src="/brand/phish-logo-whitetp.png" alt="" aria-hidden="true" loading="lazy">
+    </a>
+  </nav>
+</footer>

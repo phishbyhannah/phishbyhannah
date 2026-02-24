@@ -1,8 +1,8 @@
 {{ $f := site.Data.home.field_expanded }}
 <section class="section field-expanded" id="field-expanded" aria-labelledby="field-expanded-title">
-  <img class="section-bg" src="{{ $f.image }}" alt="{{ $f.image_alt }}" loading="lazy">
+  {{ partial "media/responsive_image.html" (dict "src" $f.image "alt" $f.image_alt "class" "section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
   <div class="section-overlay"></div>
-  <div class="section-content">
+  <div class="section-content has-mobile-more">
     <h2 id="field-expanded-title">{{ $f.title }}</h2>
     {{ range $f.paragraphs }}<p>{{ . }}</p>{{ end }}
     <div class="upcoming">
@@ -13,5 +13,17 @@
     </div>
     {{ range $f.notes }}<p>{{ . }}</p>{{ end }}
     <p><a class="text-cta" href="{{ $f.cta_url }}">{{ $f.cta_text }} -></a></p>
+    <details class="home-mobile-more">
+      <summary>Read more</summary>
+      <div class="home-mobile-more-body">
+        {{ range after 1 $f.paragraphs }}<p>{{ . }}</p>{{ end }}
+        <h3>{{ $f.involved_title }}</h3>
+        <ul class="home-mobile-more-list">
+          {{ range $f.involved_items }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{ range $f.notes }}<p>{{ . }}</p>{{ end }}
+        <p><a class="text-cta" href="{{ $f.cta_url }}">{{ $f.cta_text }} -></a></p>
+      </div>
+    </details>
   </div>
 </section>

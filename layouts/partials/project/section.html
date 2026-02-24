@@ -1,4 +1,5 @@
 {{ $body := .body }}
+{{ $overlayId := printf "project-mobile-gallery-%s" $body.id }}
 <section class="project-body project-{{ $body.layout }}" id="{{ $body.id }}">
   <header class="project-body-head">
     <h2>{{ $body.place }}</h2>
@@ -6,39 +7,70 @@
     {{ with $body.intro }}<p class="project-micro">{{ . }}</p>{{ end }}
   </header>
 
+  <div class="project-mobile-two-row" aria-label="{{ $body.place }} {{ $body.year }} mobile gallery">
+    {{ range $row := seq 0 1 }}
+    <div class="project-mobile-row">
+      {{ range $idx, $img := $body.images }}
+      {{ if eq (mod $idx 2) $row }}
+      {{ $thumbSrc := or $img.grid_path $img.path $img.fullpage_path }}
+      {{ $thumbAlt := or $img.alt (printf "%s %s image %d" $body.place $body.year (add $idx 1)) }}
+      <button type="button" class="project-mobile-thumb" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        <figure class="project-mobile-thumb-frame">
+          {{ partial "media/responsive_image.html" (dict "src" $thumbSrc "alt" $thumbAlt "loading" "lazy" "decoding" "async" "sizes" "42vw" "fallbackWidth" 768) }}
+        </figure>
+      </button>
+      {{ end }}
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="project-mobile-overlay" id="{{ $overlayId }}" hidden>
+    <button type="button" class="project-mobile-close project-mobile-close-top" data-project-close="{{ $overlayId }}" aria-label="Close gallery">×</button>
+    <div class="project-gallery-mobile-track" aria-label="{{ $body.place }} {{ $body.year }} mobile gallery overlay">
+      {{ range $idx, $img := $body.images }}
+      {{ $mobileSrc := or $img.path $img.grid_path $img.fullpage_path }}
+      {{ $mobileAlt := or $img.alt (printf "%s %s gallery image %d" $body.place $body.year (add $idx 1)) }}
+      <figure class="project-mobile-gallery-item" data-project-item-index="{{ $idx }}">
+        {{ partial "media/responsive_image.html" (dict "src" $mobileSrc "alt" $mobileAlt "loading" "lazy" "decoding" "async" "sizes" "100vw" "fallbackWidth" 1600) }}
+      </figure>
+      {{ end }}
+    </div>
+  </div>
+
   <div class="project-gallery project-gallery-{{ $body.layout }}">
     {{ $total := len $body.images }}
     {{ range $idx, $img := $body.images }}
       {{ if eq $body.layout "editorial-column" }}
-      <figure class="project-frame {{ if eq (mod $idx 5) 0 }}project-frame-wide{{ end }}">
-        <img src="{{ if eq (mod $idx 5) 0 }}{{ $img.fullpage_path }}{{ else }}{{ $img.path }}{{ end }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      <figure class="project-frame project-desktop-open {{ if eq (mod $idx 5) 0 }}project-frame-wide{{ end }}" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" tabindex="0" role="button" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        {{ partial "media/responsive_image.html" (dict "src" (cond (eq (mod $idx 5) 0) $img.fullpage_path $img.path) "alt" $img.alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 80vw" "fallbackWidth" 1600) }}
       </figure>
       {{ else if eq $body.layout "horizontal-snap" }}
-      <figure class="project-frame project-snap-item">
-        <img src="{{ $img.path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      <figure class="project-frame project-snap-item project-desktop-open" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" tabindex="0" role="button" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        {{ partial "media/responsive_image.html" (dict "src" $img.path "alt" $img.alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 80vw" "fallbackWidth" 1400) }}
       </figure>
       {{ else if eq $body.layout "horizontal-masonry-snap" }}
       {{ $local := mod $idx 6 }}
       {{ if eq $local 0 }}
       <div class="project-snap-cluster" role="group" aria-label="{{ $body.place }} {{ $body.year }} image cluster">
       {{ end }}
-      <figure class="project-frame project-cluster-item {{ if eq $local 0 }}project-cluster-wide{{ else if eq $local 1 }}project-cluster-tall{{ else if eq $local 4 }}project-cluster-wide-short{{ else if eq $local 5 }}project-cluster-tall-alt{{ end }}">
-        <img src="{{ $img.path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      <figure class="project-frame project-cluster-item project-desktop-open {{ if eq $local 0 }}project-cluster-wide{{ else if eq $local 1 }}project-cluster-tall{{ else if eq $local 4 }}project-cluster-wide-short{{ else if eq $local 5 }}project-cluster-tall-alt{{ end }}" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" tabindex="0" role="button" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        {{ partial "media/responsive_image.html" (dict "src" $img.path "alt" $img.alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 85vw, 45vw" "fallbackWidth" 1200) }}
       </figure>
       {{ if or (eq (mod (add $idx 1) 6) 0) (eq (add $idx 1) $total) }}
       </div>
       {{ end }}
       {{ else if eq $body.layout "grid" }}
-      <figure class="project-frame project-grid-item">
-        <img src="{{ $img.grid_path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      <figure class="project-frame project-grid-item project-desktop-open" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" tabindex="0" role="button" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        {{ partial "media/responsive_image.html" (dict "src" $img.grid_path "alt" $img.alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
       </figure>
       {{ else if eq $body.layout "rhythm" }}
-      <figure class="project-frame project-rhythm-item">
-        <img src="{{ if eq (mod (add $idx 1) 3) 0 }}{{ $img.fullpage_path }}{{ else }}{{ $img.path }}{{ end }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      <figure class="project-frame project-rhythm-item project-desktop-open" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" tabindex="0" role="button" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        {{ partial "media/responsive_image.html" (dict "src" (cond (eq (mod (add $idx 1) 3) 0) $img.fullpage_path $img.path) "alt" $img.alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 50vw" "fallbackWidth" 1400) }}
       </figure>
       {{ else if eq $body.layout "masonry" }}
-      <figure class="project-frame project-masonry-item">
-        <img src="{{ $img.grid_path }}" alt="{{ $img.alt }}" loading="lazy" decoding="async">
+      <figure class="project-frame project-masonry-item project-desktop-open" data-project-open="{{ $overlayId }}" data-project-index="{{ $idx }}" tabindex="0" role="button" aria-controls="{{ $overlayId }}" aria-label="Open image {{ add $idx 1 }} from {{ $body.place }} {{ $body.year }}">
+        {{ partial "media/responsive_image.html" (dict "src" $img.grid_path "alt" $img.alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
       </figure>
       {{ end }}
     {{ end }}

@@ -1,8 +1,8 @@
 {{ $w := site.Data.home.works_expanded }}
 <section class="section works-expanded" id="works-expanded" aria-labelledby="works-expanded-title">
-  <img class="section-bg" src="{{ $w.image }}" alt="{{ $w.image_alt }}" loading="lazy">
+  {{ partial "media/responsive_image.html" (dict "src" $w.image "alt" $w.image_alt "class" "section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
   <div class="section-overlay"></div>
-  <div class="section-content">
+  <div class="section-content has-mobile-more">
     <h2 id="works-expanded-title">{{ $w.title }}</h2>
     <p class="lead">{{ $w.lead }}</p>
     <p>{{ $w.body }}</p>
@@ -10,5 +10,15 @@
       {{ range $w.bullets }}<li>{{ . }}</li>{{ end }}
     </ul>
     <p><a class="text-cta" href="{{ $w.cta_url }}">{{ $w.cta_text }} -></a></p>
+    <details class="home-mobile-more">
+      <summary>Read more</summary>
+      <div class="home-mobile-more-body">
+        <p>{{ $w.body }}</p>
+        <ul class="home-mobile-more-list">
+          {{ range $w.bullets }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        <p><a class="text-cta" href="{{ $w.cta_url }}">{{ $w.cta_text }} -></a></p>
+      </div>
+    </details>
   </div>
 </section>

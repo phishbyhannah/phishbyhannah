@@ -1,0 +1,46 @@
+name: Image Policy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  image-policy:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Collect changed images
+        id: changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
+            if [[ "$BASE" == "0000000000000000000000000000000000000000" ]]; then
+              BASE="$(git rev-list --max-parents=0 "$HEAD" | tail -n1)"
+            fi
+          fi
+
+          files="$(git diff --name-only "$BASE" "$HEAD" | grep -Ei '^(static/images|static/processed/project)/.*\.(jpg|jpeg|png|webp|avif|gif)$' || true)"
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+      - name: Run image policy checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "${{ steps.changed.outputs.files }}" ]]; then
+            echo "No changed images to validate."
+            exit 0
+          fi
+          mapfile -t paths <<< "${{ steps.changed.outputs.files }}"
+          python3 scripts/image_policy_check.py "${paths[@]}"

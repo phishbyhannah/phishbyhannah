@@ -3,7 +3,7 @@ title: "Micro Manifesto"
 weight: 20
 ---
 
-<!-- TODO: Place the requested panorama image at /static/images/phish-manifesto-bg.jpg -->
+<!-- TODO: Place the requested panorama image at /static/images/phish-manifesto-bg.png -->
 
 PHISH is a long form visual project documenting people in places.
 

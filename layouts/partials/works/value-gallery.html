@@ -9,7 +9,7 @@
   <div class="section-content values-grid" role="list">
     {{ range . }}
     <button class="value-card" type="button" aria-label="{{ .title }}" role="listitem">
-      <img src="/images/{{ .image }}" alt="{{ .alt }}" loading="lazy">
+      {{ partial "media/responsive_image.html" (dict "src" (printf "/images/%s" .image) "alt" .alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
       <span class="value-overlay" aria-hidden="true"></span>
       <span class="value-copy">
         <span class="value-title">{{ .title }}</span>

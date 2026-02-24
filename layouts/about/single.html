@@ -4,14 +4,16 @@
 
   {{ with .Params.opener }}
   <section id="{{ .id }}" class="about-section about-opener about-light{{ if .bg_image }} about-has-bg{{ end }}">
-    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Opener background" loading="lazy">{{ end }}
+    {{ if .bg_image }}{{ partial "media/responsive_image.html" (dict "src" .bg_image "alt" "Opener background" "class" "about-section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
     {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
     <div class="about-wrap about-opener-layout">
       {{ with .images }}
       <div class="about-opener-grid" aria-label="Perth hospitality journey photos">
         {{ range first 6 . }}
         <figure class="about-opener-grid-item">
-          <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+          {{ $imgStyle := "" }}
+          {{ with .position }}{{ $imgStyle = (printf "--opener-pos: %s;" . | safeCSS) }}{{ end }}
+          {{ partial "media/responsive_image.html" (dict "src" .src "alt" .alt "loading" "lazy" "sizes" "(max-width: 900px) 80vw, 33vw" "fallbackWidth" 1080 "style" $imgStyle) }}
         </figure>
         {{ end }}
       </div>
@@ -28,22 +30,35 @@
 
   {{ with .Params.whale_shark_story }}
   <section id="{{ .id }}" class="about-section about-image-story about-dark{{ if .bg_image }} about-has-bg{{ end }}">
-    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="{{ .title }} background" loading="lazy">{{ end }}
+    {{ if .bg_image }}{{ partial "media/responsive_image.html" (dict "src" .bg_image "alt" (printf "%s background" .title) "class" "about-section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
     {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
     <div class="about-image-story-media">
-      <img src="{{ with .image }}{{ . }}{{ else }}{{ .bg_image }}{{ end }}" alt="{{ .image_alt }}" loading="lazy">
+      {{ partial "media/responsive_image.html" (dict "src" (cond (ne .image nil) .image .bg_image) "alt" .image_alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 50vw" "fallbackWidth" 1200) }}
       {{ with .caption }}<p class="about-micro-caption">{{ . }}</p>{{ end }}
     </div>
     <div class="about-wrap about-narrow">
       <h2>{{ .title }}</h2>
-      {{ range .body }}<p>{{ . }}</p>{{ end }}
+      <div class="about-desktop-copy">
+        {{ range .body }}<p>{{ . }}</p>{{ end }}
+      </div>
+      <div class="about-mobile-copy">
+        {{ with index .body 0 }}<p class="about-mobile-lede">{{ . }}</p>{{ end }}
+        {{ if gt (len .body) 1 }}
+        <details class="about-mobile-more">
+          <summary>Read full story</summary>
+          <div class="about-mobile-more-body">
+            {{ range after 1 .body }}<p>{{ . }}</p>{{ end }}
+          </div>
+        </details>
+        {{ end }}
+      </div>
     </div>
   </section>
   {{ end }}
 
   {{ with .Params.gratitude_panel }}
   <section id="{{ .id }}" class="about-section about-gratitude about-dark{{ if .bg_image }} about-has-bg{{ end }}">
-    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Gratitude section background" loading="lazy">{{ end }}
+    {{ if .bg_image }}{{ partial "media/responsive_image.html" (dict "src" .bg_image "alt" "Gratitude section background" "class" "about-section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
     {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
     <div class="about-wrap about-narrow">
       <p>{{ .text }}</p>
@@ -57,10 +72,21 @@
 
   {{ with .Params.responsibility }}
   <section id="{{ .id }}" class="about-section about-responsibility about-dark{{ if .bg_image }} about-has-bg{{ end }}">
-    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Responsibility background" loading="lazy">{{ end }}
+    {{ if .bg_image }}{{ partial "media/responsive_image.html" (dict "src" .bg_image "alt" "Responsibility background" "class" "about-section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
     {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
     <div class="about-wrap about-narrow about-responsibility-copy">
-      <p>{{ .text }}</p>
+      <div class="about-desktop-copy">
+        <p>{{ .text }}</p>
+      </div>
+      <div class="about-mobile-copy">
+        <p class="about-mobile-lede about-mobile-lede--clamp">{{ .text }}</p>
+        <details class="about-mobile-more">
+          <summary>Read full story</summary>
+          <div class="about-mobile-more-body">
+            <p>{{ .text }}</p>
+          </div>
+        </details>
+      </div>
     </div>
   </section>
   {{ end }}
@@ -69,7 +95,7 @@
 
   {{ with .Params.final_cta }}
   <section id="{{ .id }}" class="about-section about-final-cta about-light{{ if .bg_image }} about-has-bg{{ end }}">
-    {{ if .bg_image }}<img class="about-section-bg" src="{{ .bg_image }}" alt="Final CTA background" loading="lazy">{{ end }}
+    {{ if .bg_image }}{{ partial "media/responsive_image.html" (dict "src" .bg_image "alt" "Final CTA background" "class" "about-section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
     {{ if .overlay }}<div class="about-section-overlay"></div>{{ end }}
     <div class="about-wrap about-narrow">
       <h2>{{ .text }}</h2>

@@ -1,7 +1,7 @@
 {{ $project := .project }}
 <section class="project-hero">
-  <img class="project-hero-base" src="/images/waterhabitat/phish-waterhabitat-mobular-baja-2025-001.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
-  <img class="project-hero-overlay-image" src="/images/hero/phish-heroimage-Phishletters-people.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+  {{ partial "media/responsive_image.html" (dict "src" "/images/waterhabitat/phish-waterhabitat-ray-ningaloo-2024-001.jpg" "alt" "Ray resting on the seafloor" "class" "project-hero-base" "loading" "eager" "fetchpriority" "high" "decoding" "async" "sizes" "100vw" "fallbackWidth" 1920) }}
+  {{ partial "media/responsive_image.html" (dict "src" "/images/hero/phish-heroimage-Phishletters-people.png" "alt" "" "class" "project-hero-overlay-image" "loading" "eager" "decoding" "async" "sizes" "100vw" "fallbackWidth" 1400) }}
   <div class="project-hero-shade" aria-hidden="true"></div>
   <div class="project-hero-inner">
     <h1>{{ $project.title }}</h1>

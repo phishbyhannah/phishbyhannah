@@ -7,7 +7,7 @@
   <div class="gallery-strip" role="region" aria-label="Scrolling gallery">
     {{ range $g.images }}
     <a class="gallery-item" href="{{ .url }}">
-      <img src="{{ .src }}" alt="{{ .alt }}" loading="lazy">
+      {{ partial "media/responsive_image.html" (dict "src" .src "alt" .alt "loading" "lazy" "sizes" "(max-width: 900px) 80vw, 30vw" "fallbackWidth" 1080) }}
     </a>
     {{ end }}
   </div>

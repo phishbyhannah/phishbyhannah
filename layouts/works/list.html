@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main class="works-page">
   <section class="section works-hero" aria-labelledby="works-title">
-    <img class="section-bg" src="/images/peopleinplace/Phish-peopleinplaces-Bumble-ningaloo-2025-006.jpg" alt="Works hero image" loading="eager" fetchpriority="high">
+    {{ partial "media/responsive_image.html" (dict "src" "/images/peopleinplace/Phish-peopleinplaces-Bumble-ningaloo-2025-006.jpg" "alt" "Works hero image" "class" "section-bg" "loading" "eager" "fetchpriority" "high" "sizes" "100vw" "fallbackWidth" 1920) }}
     <div class="section-overlay"></div>
     <div class="section-content works-hero-inner">
       <h1 id="works-title">{{ .Params.headline }}</h1>

@@ -35,8 +35,8 @@
   overflow: clip;
   min-height: 100svh;
   display: flex;
-  align-items: center;
-  padding-top: 0;
+  align-items: flex-end;
+  padding: 0 1.25rem;
 }
 
 .works-hero .section-overlay {
@@ -48,8 +48,9 @@
   z-index: 2;
   background: transparent;
   text-align: left;
-  padding-top: 10rem;
-  padding-bottom: 2rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: clamp(10svh, 14svh, 18svh);
 }
 
 .works-hero-inner h1 {
@@ -64,6 +65,7 @@
   color: var(--text-soft);
   margin-left: 0;
   margin-right: 0;
+  line-height: 1.7;
 }
 
 .works-expander-list {
@@ -121,6 +123,7 @@
 .works-card-teaser {
   color: var(--text-soft);
   max-width: 56ch;
+  line-height: 1.65;
 }
 
 .works-hover-copy {
@@ -131,10 +134,11 @@
   width: min(30rem, calc(100% - 2.2rem));
   bottom: 0.75rem;
   padding: 0.7rem;
-  background: rgba(244, 246, 252, 0.18);
-  border: 1px solid rgba(244, 246, 252, 0.35);
+  background: rgba(8, 13, 18, 0.62);
+  border: 1px solid rgba(244, 246, 252, 0.52);
   backdrop-filter: blur(1px);
   color: #f4f6fc;
+  line-height: 1.58;
 }
 
 .works-toggle {
@@ -282,7 +286,7 @@
   text-align: center;
   margin: 0;
   font-size: clamp(0.92rem, 1.2vw, 1.02rem);
-  line-height: 1.4;
+  line-height: 1.58;
   opacity: 0;
   visibility: hidden;
   transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
@@ -322,7 +326,7 @@
 .works-gallery-item figcaption,
 .works-card-teaser,
 .works-hover-copy {
-  color: var(--text-soft);
+  color: #e8edf7;
 }
 
 .works-gallery-grid {
@@ -492,12 +496,20 @@
 @media (max-width: 760px) {
   .works-hero {
     min-height: 100svh;
-    padding-top: 0;
+    padding: 0 1.25rem;
   }
 
   .works-hero-inner {
-    padding-top: 8.6rem;
-    padding-bottom: 1.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: clamp(8svh, 12svh, 16svh);
+    max-width: min(92vw, 36rem);
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .works-toggle {
@@ -512,5 +524,19 @@
 
   .works-list {
     padding-left: 1rem;
+  }
+
+  .works-process-grid {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(82vw, 1fr);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0.75rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .works-process-block {
+    min-height: 17rem;
+    scroll-snap-align: start;
   }
 }

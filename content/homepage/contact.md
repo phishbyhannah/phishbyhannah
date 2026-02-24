@@ -12,4 +12,4 @@ Tell me where you are, and what you are trying to build.
 
 [Get in touch](/contact)
 
-<img class="brand-stamp" src="/brand/phish-symbol-light.png" alt="PHISH symbol">
+<img class="brand-stamp" src="/brand/phish-symbol-light.png" alt="PHISH symbol" loading="lazy" decoding="async">

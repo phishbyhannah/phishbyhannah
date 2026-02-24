@@ -1,6 +1,6 @@
 {{ $section := .section }}
 <section id="{{ $section.id }}" class="about-section about-cards about-light{{ if $section.bg_image }} about-has-bg{{ end }}">
-  {{ if $section.bg_image }}<img class="about-section-bg" src="{{ $section.bg_image }}" alt="{{ $section.title }} background" loading="lazy">{{ end }}
+  {{ if $section.bg_image }}{{ partial "media/responsive_image.html" (dict "src" $section.bg_image "alt" (printf "%s background" $section.title) "class" "about-section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
   {{ if $section.overlay }}<div class="about-section-overlay"></div>{{ end }}
   <div class="about-wrap">
     <h2>{{ $section.title }}</h2>

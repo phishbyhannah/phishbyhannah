@@ -2,7 +2,7 @@
 <main class="inner-page{{ if eq .RelPermalink "/contact/" }} contact-page{{ end }}">
   {{ if eq .RelPermalink "/contact/" }}
   {{ $contact := site.Data.home.contact }}
-  <img class="section-bg" src="{{ $contact.page_image }}" alt="Contact page background image" loading="eager" fetchpriority="high">
+  {{ partial "media/responsive_image.html" (dict "src" $contact.page_image "alt" "Contact page background image" "class" "section-bg" "loading" "eager" "fetchpriority" "high" "sizes" "100vw" "fallbackWidth" 1920) }}
   <div class="section-overlay"></div>
   {{ end }}
   <section class="inner-wrap">

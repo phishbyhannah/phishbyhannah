@@ -1,10 +1,19 @@
 {{ $b := site.Data.home.built_in_field }}
 <section class="section built" id="built-in-field" aria-labelledby="built-title">
-  <img class="section-bg" src="{{ $b.image }}" alt="{{ $b.image_alt }}" loading="lazy">
+  {{ partial "media/responsive_image.html" (dict "src" $b.image "alt" $b.image_alt "class" "section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
   <div class="section-overlay"></div>
-  <div class="section-content left-half">
+  <div class="section-content left-half has-mobile-more">
     <h2 id="built-title">{{ $b.title }}</h2>
     {{ range $b.paragraphs }}<p>{{ . }}</p>{{ end }}
     <p><a class="text-cta" href="{{ $b.cta_url }}">{{ $b.cta_text }} -></a></p>
+    {{ if gt (len $b.paragraphs) 1 }}
+    <details class="home-mobile-more">
+      <summary>Read more</summary>
+      <div class="home-mobile-more-body">
+        {{ range after 1 $b.paragraphs }}<p>{{ . }}</p>{{ end }}
+        <p><a class="text-cta" href="{{ $b.cta_url }}">{{ $b.cta_text }} -></a></p>
+      </div>
+    </details>
+    {{ end }}
   </div>
 </section>

@@ -1,9 +1,20 @@
-baseURL = "https://phishbyhannah.com"
+baseURL = "https://phish.studio/"
 languageCode = "en-au"
 title = "PHISH"
 defaultContentLanguage = "en"
 enableRobotsTXT = true
 summaryLength = 30
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "static/images"
+    target = "assets/images"
 
 [params]
   title = "PHISH"
@@ -14,6 +25,8 @@ summaryLength = 30
   invertSectionColors = true
   hidedesignbyline = true
   image_options = "webp q90 lanczos photo"
+  imageJPEGQuality = 92
+  imageWebPQuality = 90
   combine_page_and_site_title = true
   copyright = "© PHISH"
 

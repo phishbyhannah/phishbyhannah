@@ -1,6 +1,6 @@
 ---
 # Add images either as page resources inside content/en/projectpage/ (recommended)
-# and reference by filename, or use static paths like /images/your-file.jpg.
+# and reference by filename, or use static paths like images/journey/your-file.jpg
 # To add another chapter, copy this file pattern, change weight/title/blocks.
 title: "Ningaloo Chapter"
 weight: 10

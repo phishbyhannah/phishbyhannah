@@ -1,6 +1,8 @@
 (() => {
   const links = document.querySelectorAll('a[href^="#"]');
   if (!links.length) return;
+  const prefersReducedMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   links.forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -9,7 +11,10 @@
       const target = document.querySelector(href);
       if (!target) return;
       event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
     });
   });
 })();

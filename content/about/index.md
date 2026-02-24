@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Who is Phish"
 hero:
   id: "story"
   bg_image: "/images/me/phish-journey-me-perth-2026-003-2.jpg"
@@ -31,6 +31,7 @@ opener:
       alt: "Hospitality food photo from Perth journey"
     - src: "/images/journey/phish-journey-food-002.jpg"
       alt: "Perth hospitality campaign food capture"
+      position: "center bottom"
     - src: "/images/journey/phish-journey-food-003.jpg"
       alt: "Food styling image from early brand work"
     - src: "/images/journey/phish-journey-food-004.jpg"
@@ -39,12 +40,13 @@ opener:
       alt: "Restaurant content work before field guiding"
     - src: "/images/journey/phish-journey-food-006.jpg"
       alt: "Hospitality social media food imagery"
+      position: "center bottom"
 
 perth_to_ningaloo:
   id: "perth-to-ningaloo"
-  bg_image: "/images/waterhabitat/phish-waterhabitat-arieal-ningaloo-2023-005.jpg"
+  bg_image: "/images/waterhabitat/phish-waterhabitat-aerial-ningaloo-2023-005.jpg"
   overlay: false
-  image: "/images/waterhabitat/phish-waterhabitat-arieal-ningaloo-2023-005.jpg"
+  image: "/images/waterhabitat/phish-waterhabitat-aerial-ningaloo-2023-005.jpg"
   image_alt: "Coastal transition from city to waters"
   title: "Then I moved to Ningaloo"
   body:
@@ -58,11 +60,11 @@ quote_panel:
   id: "quote"
   overlay: true
   bg_image: "/images/waterhabitat/phish-waterhabitat-turtle-ningaloo-2025-002.jpg"
-  quote: "The work stopped being about producing content. It became about witnessing."
+  quote: "THE WORK STOPPED BEING ABOUT PRODUCING CONTENT. IT BECAME ABOUT WITNESSING."
 
 whale_shark_story:
   id: "whale-shark-story"
-  bg_image: "/images/waterhabitat/phish-waterhabitat-arieal-ningaloo-2023-014.jpg"
+  bg_image: "/images/waterhabitat/phish-waterhabitat-aerial-ningaloo-2023-014.jpg"
   overlay: false
   image_alt: "Whale shark in open water"
   caption: "Ningaloo coast, a turning point."
@@ -106,7 +108,7 @@ process:
   id: "process"
   overlay: true
   bg_image: "/images/peopleinplace/phish-Peopleinplace-miesa-ningaloo-2025-001.jpg"
-  title: "How it works"
+  title: "How I Work"
   blocks:
     - title: "Strategy First"
       text: "My background in marketing and brand strategy means I think beyond the frame and align imagery with launches, sequencing and brand identity."
@@ -133,7 +135,7 @@ responsibility:
 direction:
   id: "direction"
   overlay: true
-  bg_image: "/images/waterhabitat/phish-waterhabitat-arieal-ningaloo-2023-015.jpg"
+  bg_image: "/images/waterhabitat/phish-waterhabitat-aerial-ningaloo-2023-015.jpg"
   title: "Where It’s Going"
   now_title: "Now"
   now_items:

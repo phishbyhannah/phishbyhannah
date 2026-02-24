@@ -9,7 +9,7 @@
   {{ end }}
 {{ end }}
 <section id="{{ $panels.id }}" class="field-section field-panels {{ $tone }}">
-  {{ with $bgImage }}<img class="field-bg" src="{{ . }}" alt="Field panels background" loading="lazy">{{ end }}
+  {{ with $bgImage }}{{ partial "media/responsive_image.html" (dict "src" . "alt" "Field panels background" "class" "field-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
   {{ if $panels.overlay }}<div class="field-overlay"></div>{{ end }}
   <div class="field-wrap">
     <div class="field-panel-grid">
@@ -25,7 +25,7 @@
         {{ end }}
       {{ end }}
       <article class="field-panel-card{{ if $itemBg }} has-bg{{ end }}{{ if $isOpen }} is-open{{ end }}" data-panel-body="{{ $pid }}" id="{{ printf "field-card-%d" (add $index 1) }}">
-        {{ with $itemBg }}<img class="field-panel-bg" src="{{ . }}" alt="{{ $item.title }} background" loading="lazy">{{ end }}
+        {{ with $itemBg }}{{ partial "media/responsive_image.html" (dict "src" . "alt" (printf "%s background" $item.title) "class" "field-panel-bg" "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 50vw" "fallbackWidth" 1080) }}{{ end }}
         <header class="field-panel-head">
           <h2>{{ $item.title }}</h2>
           <span class="field-status-pill">{{ $item.status }}</span>

@@ -86,10 +86,14 @@
 }
 
 .top-nav-link--works img,
-.top-nav-link--field img,
+.top-nav-link--field img {
+  width: 48px;
+  height: 48px;
+}
+
 .top-nav-link--about img {
-  width: 32px;
-  height: 32px;
+  width: 62.4px;
+  height: 62.4px;
 }
 
 .nav-tooltip {
@@ -151,11 +155,15 @@
   .brand-nav-stack {
     top: max(0.45rem, env(safe-area-inset-top));
     right: max(0.4rem, env(safe-area-inset-right));
-    gap: 0.34rem;
+    left: max(0.4rem, env(safe-area-inset-left));
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    gap: 0.28rem;
   }
 
   .brand-home {
     padding: 0.06rem;
+    flex: 0 0 auto;
   }
 
   .brand-home img {
@@ -163,33 +171,39 @@
   }
 
   .top-nav-inner {
-    width: 44px;
-    gap: 0.08rem;
+    width: auto;
+    gap: 0.02rem;
+    flex-direction: row;
     justify-content: center;
-    padding: 0.14rem;
+    padding: 0.1rem 0.14rem;
+    border-radius: 999px;
   }
 
   .top-nav-link {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     flex-direction: row;
   }
 
   .top-nav-link svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .top-nav-link img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .top-nav-link--works img,
-  .top-nav-link--field img,
+  .top-nav-link--field img {
+    width: 30px;
+    height: 30px;
+  }
+
   .top-nav-link--about img {
-    width: 24px;
-    height: 24px;
+    width: 38px;
+    height: 38px;
   }
 
   .nav-tooltip {
@@ -202,8 +216,8 @@
   }
 
   .top-nav-link.is-active::after {
-    left: 8px;
-    right: 8px;
-    bottom: 2px;
+    left: 6px;
+    right: 6px;
+    bottom: 1px;
   }
 }

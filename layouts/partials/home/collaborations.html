@@ -7,12 +7,12 @@
       {{ range $c.items }}
       {{ if .url }}
       <a class="logo-item" href="{{ .url }}">
-        <img src="{{ .logo }}" alt="{{ .alt }}">
+        {{ partial "media/responsive_image.html" (dict "src" .logo "alt" .alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 760px) 45vw, 18vw" "fallbackWidth" 480) }}
         <span>{{ .name }}</span>
       </a>
       {{ else }}
       <div class="logo-item">
-        <img src="{{ .logo }}" alt="{{ .alt }}">
+        {{ partial "media/responsive_image.html" (dict "src" .logo "alt" .alt "loading" "lazy" "decoding" "async" "sizes" "(max-width: 760px) 45vw, 18vw" "fallbackWidth" 480) }}
         <span>{{ .name }}</span>
       </div>
       {{ end }}

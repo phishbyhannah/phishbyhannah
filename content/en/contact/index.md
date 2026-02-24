@@ -5,7 +5,7 @@ type: "contact"
 layout: "single"
 hero:
   id: "contact-hero"
-  # Replace with your final image file. Can be a page resource filename or /images/... path.
+  # Replace with your final image file. Can be a page resource filename or an absolute /images/ path.
   bg_image: "/images/waterhabitat/phish-waterhabitat-mobular-baja-2025-001.jpg"
   overlay: true
   title: ""

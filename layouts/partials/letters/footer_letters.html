@@ -31,10 +31,13 @@
 {{ if ne .RelPermalink "/contact/" }}
 <section class="section letters-animals letters-footer" aria-label="PHISH letters image">
   <div class="section-content letters-animals-title-wrap">
-    <h2 class="letters-animals-title">Contact</h2>
+    <h2 class="letters-animals-title">Work with</h2>
+  </div>
+  <div class="section-content letters-animals-cta-wrap">
+    <a class="letters-animals-connect-btn" href="/contact/" aria-label="Click here to connect">Click here to connect</a>
   </div>
   <a class="letters-animals-link" href="{{ $href }}" aria-label="{{ $label }}">
-    <img class="section-bg" src="{{ $img }}" alt="{{ $alt }}" loading="lazy">
+    {{ partial "media/responsive_image.html" (dict "src" $img "alt" $alt "class" "section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
   </a>
 </section>
 {{ end }}

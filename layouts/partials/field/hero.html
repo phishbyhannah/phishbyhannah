@@ -1,4 +1,6 @@
 {{ $hero := .Params.hero }}
+{{ $heroBody := $hero.body | default (slice) }}
+{{ $hasHeroBody := gt (len $heroBody) 0 }}
 {{ $heroImage := "" }}
 {{ with .Params.header_image }}
   {{ with $.Resources.GetMatch . }}
@@ -8,9 +10,9 @@
   {{ end }}
 {{ end }}
 <section id="{{ $hero.id }}" class="field-section field-hero tone-dark">
-  {{ with $heroImage }}<img class="field-bg" src="{{ . }}" alt="Field hero background" loading="eager" fetchpriority="high">{{ end }}
+  {{ with $heroImage }}{{ partial "media/responsive_image.html" (dict "src" . "alt" "Field hero background" "class" "field-bg" "loading" "eager" "fetchpriority" "high" "sizes" "100vw" "fallbackWidth" 1920) }}{{ end }}
   {{ if $hero.overlay }}<div class="field-overlay"></div>{{ end }}
-  <div class="field-wrap field-hero-inner">
+  <div class="field-wrap field-hero-inner field-desktop-copy">
     <h1>{{ $hero.title }}</h1>
     <p>{{ $hero.subtitle }}</p>
     {{ with $hero.body }}
@@ -19,6 +21,18 @@
     </div>
     {{ end }}
   </div>
+  <div class="field-wrap field-hero-inner field-mobile-story">
+    <h1>{{ $hero.title }}</h1>
+    <p class="field-mobile-lead">{{ $hero.subtitle }}</p>
+  </div>
+  {{ if $hasHeroBody }}
+  <details class="field-mobile-more field-wrap field-narrow">
+    <summary>Read more</summary>
+    <div class="field-mobile-more-body">
+      {{ range $heroBody }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </details>
+  {{ end }}
   {{ with $hero.nav }}
   <nav class="field-anchor-nav" aria-label="Field sections">
     {{ range . }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}

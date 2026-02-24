@@ -54,11 +54,14 @@ gallery:
   cta_text: "See full archive"
   cta_url: "/project/"
   images:
-    - src: "/images/waterhabitat/phish-waterhabitat-manta-ningaloo-2025-004.jpg"
-      alt: "Manta ray underside"
+    - src: "/images/waterhabitat/phish-waterhabitat-favs-ningaloo-2025.001.jpg"
+      alt: "Favourite Ningaloo manta ray"
       url: "/project/"
-    - src: "/images/waterhabitat/phish-waterhabitat-Jellyfish-ningaloo-2024-003.jpg"
-      alt: "Jellyfish floating in open sea"
+    - src: "/images/waterhabitat/phish-waterhabitat-favs-ningaloo-2025.002.jpg"
+      alt: "Favourite Ningaloo jellyfish with whale shark"
+      url: "/project/"
+    - src: "/images/waterhabitat/phish-waterhabitat-favs-ningaloo-2025.003.jpg"
+      alt: "Favourite Ningaloo leopard shark from above"
       url: "/project/"
     - src: "/images/waterhabitat/phish-waterhabitat-coral-raja-2024-002.jpg"
       alt: "Red jellyfish near sunlit surface"
@@ -72,6 +75,14 @@ gallery:
     - src: "/images/waterhabitat/phish-waterhabitat-whaleshark-ningaloo-2024-003.jpg"
       alt: "Whale shark with schooling fish"
       url: "/project/"
+    - src: "/images/peopleinplace/Phish-peopleinplaces-Sanch-ningaloo-2024-002.jpg"
+      alt: "Girls Paddle boarding"
+      url: "/project/"
+    - src: "/images/waterhabitat/phish-waterhabitat-turtle-ningaloo-2025-002.jpg"
+      alt: "Baby Turtles"
+      url: "/project/"
+
+     
 
 who_is_phish:
   title: "Hannah Lamb."

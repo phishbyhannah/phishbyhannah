@@ -1,0 +1,9 @@
+{{ $favicon := .Params.favicon | default "favicon-32x32.png" }}
+{{ $type := "image/png" }}
+{{ if hasSuffix $favicon ".svg" }}
+  {{ $type = "image/svg+xml" }}
+{{ else if hasSuffix $favicon ".ico" }}
+  {{ $type = "image/x-icon" }}
+{{ end }}
+<link rel="icon" type="{{ $type }}" href="{{ $favicon | relURL }}">
+<link rel="shortcut icon" type="{{ $type }}" href="{{ $favicon | relURL }}">

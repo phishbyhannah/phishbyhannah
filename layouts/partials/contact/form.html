@@ -39,7 +39,7 @@
       </section>
 
       <aside class="contact-form-image" aria-label="Supporting contact image">
-        <img src="/images/hero/phish-heroimage-bulls.png" alt="Bull sharks in open water" loading="lazy" decoding="async">
+        {{ partial "media/responsive_image.html" (dict "src" "/images/hero/phish-heroimage-bulls.png" "alt" "Bull sharks in open water" "loading" "lazy" "decoding" "async" "sizes" "(max-width: 900px) 100vw, 40vw" "fallbackWidth" 1080) }}
       </aside>
     </div>
   </article>

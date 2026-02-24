@@ -1,8 +1,8 @@
 {{ $c := site.Data.home.contact }}
 <section class="section contact" id="contact" aria-labelledby="contact-title">
-  <img class="section-bg" src="{{ $c.image }}" alt="{{ $c.image_alt }}" loading="lazy">
+  {{ partial "media/responsive_image.html" (dict "src" $c.image "alt" $c.image_alt "class" "section-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
   <div class="section-overlay"></div>
-  <div class="section-content">
+  <div class="section-content has-mobile-more">
     {{ with $c.title }}<h2 id="contact-title">{{ . }}</h2>{{ end }}
     {{ range $c.paragraphs }}<p>{{ . }}</p>{{ end }}
     <p><a class="text-cta" href="{{ $c.cta_url }}">{{ $c.cta_text }} -></a></p>
@@ -11,5 +11,17 @@
       <li><a href="{{ .url }}">{{ .label }}</a></li>
       {{ end }}
     </ul>
+    <details class="home-mobile-more">
+      <summary>Read more</summary>
+      <div class="home-mobile-more-body">
+        {{ range after 1 $c.paragraphs }}<p>{{ . }}</p>{{ end }}
+        <ul class="home-mobile-more-list">
+          {{ range $c.links }}
+          <li><a href="{{ .url }}">{{ .label }}</a></li>
+          {{ end }}
+        </ul>
+        <p><a class="text-cta" href="{{ $c.cta_url }}">{{ $c.cta_text }} -></a></p>
+      </div>
+    </details>
   </div>
 </section>

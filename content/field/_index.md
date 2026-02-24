@@ -2,7 +2,7 @@
 title: "Field"
 url: "/field/"
 # Set this to a page resource filename (e.g. "field-hero.jpg")
-# or a static path (e.g. "/images/field-hero.jpg").
+# or a static path (e.g. "/images/hero/phish-heroimage-field.jpg").
 header_image: "/images/waterhabitat/phish-waterhabitat-Whalepec-tonga-2025-002.jpg"
 hero:
   id: "field-top"
@@ -105,7 +105,7 @@ panels:
       status: "Coming Soon"
       # Optional per-panel image placeholder for future use in template/CSS:
       # bg_image: "images/field-panel-education.jpg"
-      bg_image: "/images/waterhabitat/phish-peopleinplace-BWR-tonga-2025-003.jpg"
+      bg_image: "/images/peopleinplace/phish-peopleinplace-BWR-tonga-2025-003.jpg"
       teaser: "Marine science translated for classrooms. Field pathways, conservation, and women in ocean careers."
       hover_line: "Pilot sessions launching soon."
       expanded_text: "A classroom program built from real field practice. Designed to connect science units with lived experience, photography, and ocean environments."
@@ -115,7 +115,7 @@ panels:
         - "Career pathway story and Q&A"
         - "Optional activity component"
       micro_cta: "Register interest for pilot sessions and updates."
-      cta_label: "Register interest for pilot sessions and updates."
+      cta_label: "Register interest"
       cta_link: "/contact/"
 
 closing:

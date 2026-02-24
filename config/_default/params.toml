@@ -1,4 +1,4 @@
-favicon = "images/favicon.png"
+favicon = "brand/phish-logo-darkblue.svg"
 images = ["images/phish-waterhabitat-leopardshark-ningaloo-2025.006.jpg"]
 title_guard = false
 title = "PHISH"

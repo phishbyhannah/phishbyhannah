@@ -24,7 +24,7 @@
   {{ end }}
   <section class="post-holder dark project-fullbleed-holder">
     <figure class="project-fullbleed-figure">
-      <img src="{{ $img }}" alt="{{ $block.alt }}" loading="lazy">
+      {{ partial "media/responsive_image.html" (dict "src" $img "alt" $block.alt "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
       {{ with $block.caption }}<figcaption>{{ . }}</figcaption>{{ end }}
     </figure>
   </section>
@@ -50,10 +50,10 @@
   <section class="post-holder light project-stagger-holder">
     <div class="project-stagger-grid">
       <figure class="project-stagger-item project-stagger-left">
-        <img src="{{ $left }}" alt="{{ $block.left_alt }}" loading="lazy">
+        {{ partial "media/responsive_image.html" (dict "src" $left "alt" $block.left_alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 50vw" "fallbackWidth" 1200) }}
       </figure>
       <figure class="project-stagger-item project-stagger-right">
-        <img src="{{ $right }}" alt="{{ $block.right_alt }}" loading="lazy">
+        {{ partial "media/responsive_image.html" (dict "src" $right "alt" $block.right_alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 50vw" "fallbackWidth" 1200) }}
       </figure>
     </div>
   </section>
@@ -72,7 +72,7 @@
         {{ end }}
       {{ end }}
       <figure class="project-grid3-item">
-        <img src="{{ $grid }}" alt="{{ .alt }}" loading="lazy">
+        {{ partial "media/responsive_image.html" (dict "src" $grid "alt" .alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
       </figure>
       {{ end }}
     </div>
@@ -91,7 +91,7 @@
   <section class="post-holder{{ if eq $block.style "small" }} light{{ else }} dark{{ end }} project-breath-holder project-breath-{{ $block.style }}">
     {{ if eq $block.style "small" }}
     <figure class="project-breath-small">
-      <img src="{{ $breath }}" alt="{{ $block.alt }}" loading="lazy">
+      {{ partial "media/responsive_image.html" (dict "src" $breath "alt" $block.alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 60vw" "fallbackWidth" 1200) }}
     </figure>
     {{ end }}
   </section>

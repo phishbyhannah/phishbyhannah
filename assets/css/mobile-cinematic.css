@@ -1,0 +1,68 @@
+@media (max-width: 759px) {
+  .card,
+  .panel,
+  .section-panel,
+  .about-card,
+  .about-card-intro,
+  .about-card-outro,
+  .about-micro-caption,
+  .about-quote,
+  .works-card-signature,
+  .works-hover-copy,
+  .works-panel,
+  .works-process-copy,
+  .field-panel-card,
+  .field-launching-copy,
+  .project-break-caption,
+  .contact-form-shell,
+  .contact-detail-card,
+  .contact-quote-card,
+  .contact-bottom-copy {
+    border: 0 !important;
+    border-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  .about-card,
+  .about-card-intro,
+  .about-card-outro,
+  .about-micro-caption,
+  .about-quote,
+  .works-card-signature,
+  .works-hover-copy,
+  .works-panel,
+  .works-process-copy,
+  .field-panel-card,
+  .field-launching-copy,
+  .project-break-caption,
+  .contact-form-shell,
+  .contact-detail-card,
+  .contact-quote-card,
+  .contact-bottom-copy {
+    background: #000 !important;
+  }
+
+  .project-mobile-open,
+  .project-mobile-close,
+  .field-panel-toggle,
+  .works-card-toggle,
+  .about-card-toggle {
+    border-radius: 0 !important;
+  }
+
+  img,
+  picture img,
+  figure img,
+  .project-mobile-thumb-image,
+  .project-gallery-mobile-item img,
+  .project-break-figure img,
+  .about-card-grid img,
+  .works-gallery-item img,
+  .works-collection-item img,
+  .field-closing-image img,
+  .field-panel-bg img {
+    border-radius: 0 !important;
+  }
+}

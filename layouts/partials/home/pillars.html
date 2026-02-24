@@ -6,16 +6,31 @@
   <div class="pillar-grid">
     {{ range $p.items }}
     <article class="pillar-card" id="{{ .id }}">
-      <a class="pillar-link" href="{{ .cta_url }}">
-        <img src="{{ .image }}" alt="{{ .image_alt }}" loading="lazy">
+      <a class="pillar-link pillar-link-desktop" href="{{ .cta_url }}">
+        {{ partial "media/responsive_image.html" (dict "src" .image "alt" .image_alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
         <div class="pillar-overlay"></div>
         <div class="pillar-copy">
           <h3>{{ .name }}</h3>
           <p class="one-liner">{{ .one_liner }}</p>
-          <p>{{ .body }}</p>
-          <span class="text-cta">{{ .cta_text }} -></span>
+          <p class="pillar-body">{{ .body }}</p>
+          <span class="text-cta pillar-page-cta">{{ .cta_text }} -></span>
         </div>
       </a>
+      <div class="pillar-link pillar-link-mobile">
+        {{ partial "media/responsive_image.html" (dict "src" .image "alt" .image_alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
+        <div class="pillar-overlay"></div>
+        <div class="pillar-copy">
+          <h3>{{ .name }}</h3>
+          <p class="one-liner">{{ .one_liner }}</p>
+          <details class="pillar-mobile-more">
+            <summary>Read more</summary>
+            <div class="pillar-mobile-more-body">
+              <p>{{ .body }}</p>
+            </div>
+          </details>
+          <a class="text-cta pillar-page-cta" href="{{ .cta_url }}">{{ .cta_text }} -></a>
+        </div>
+      </div>
     </article>
     {{ end }}
   </div>

@@ -14,7 +14,7 @@
     <div class="works-collection-grid" role="list">
       {{ range $i, $item := first 12 $gallery.items }}
       <figure class="works-collection-item{{ if eq $i 0 }} is-featured{{ end }}" role="listitem">
-        <img src="{{ $item.image }}" alt="{{ $item.alt }}" loading="lazy">
+        {{ partial "media/responsive_image.html" (dict "src" $item.image "alt" $item.alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
         {{ with $item.caption }}<figcaption>{{ . }}</figcaption>{{ end }}
       </figure>
       {{ end }}

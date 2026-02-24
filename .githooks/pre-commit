@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mapfile -t files < <(git diff --cached --name-only | grep -Ei '^(static/images|static/processed/project)/.*\.(jpg|jpeg|png|webp|avif|gif)$' || true)
+if [[ ${#files[@]} -eq 0 ]]; then
+  exit 0
+fi
+
+python3 scripts/image_policy_check.py "${files[@]}"

@@ -13,14 +13,14 @@
   <div class="field-closing-gallery-track">
     {{ range . }}
     <figure class="field-closing-gallery-item">
-      <img src="{{ .image }}" alt="{{ .alt }}" loading="lazy">
+      {{ partial "media/responsive_image.html" (dict "src" .image "alt" .alt "loading" "lazy" "sizes" "(max-width: 900px) 100vw, 33vw" "fallbackWidth" 1080) }}
     </figure>
     {{ end }}
   </div>
 </section>
 {{ end }}
 <section id="{{ $c.id }}" class="field-section field-closing {{ $tone }}">
-  {{ with $bgImage }}<img class="field-bg" src="{{ . }}" alt="Field closing background" loading="lazy">{{ end }}
+  {{ with $bgImage }}{{ partial "media/responsive_image.html" (dict "src" . "alt" "Field closing background" "class" "field-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
   {{ if $c.overlay }}<div class="field-overlay"></div>{{ end }}
   <div class="field-wrap field-narrow">
     {{ with $c.title }}<h2>{{ . }}</h2>{{ end }}
@@ -30,7 +30,7 @@
 </section>
 {{ with $c.image_below }}
 <section class="field-section field-closing-image {{ $tone }}">
-  <img src="{{ . }}" alt="Field closing image" loading="lazy">
+  {{ partial "media/responsive_image.html" (dict "src" . "alt" "Field closing image" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}
   <div class="field-launching-overlay">
     <p class="field-launching-eyebrow">Launching 2026</p>
     <div class="field-launching-actions" role="navigation" aria-label="Jump to coming soon panels">

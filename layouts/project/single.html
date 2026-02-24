@@ -2,6 +2,15 @@
 {{ $project := .Site.Data.project.project }}
 <main class="project-exhibition" role="main">
   {{ partial "project/hero.html" (dict "project" $project "page" .) }}
+  <section class="project-hero-follow" aria-label="Featured project image">
+    {{ partial "media/responsive_image.html" (dict "src" "/images/peopleinplace/phish-peopleinplace-Celiea-raja-2024-002.jpg" "alt" "Celiea in Raja Ampat, 2024" "class" "project-hero-follow-image" "loading" "eager" "decoding" "async" "sizes" "100vw" "fallbackWidth" 1920) }}
+    <div class="project-hero-follow-caption" aria-label="Archive statement">
+      <p>This is the archive.</p>
+      <p>Not campaigns.</p>
+      <p>Not deliverables.</p>
+      <p>Just movement, light and lived environments.</p>
+    </div>
+  </section>
 
   {{ range $body := $project.bodies }}
     {{ partial "project/section.html" (dict "body" $body) }}

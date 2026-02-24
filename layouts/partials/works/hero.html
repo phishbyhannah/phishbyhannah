@@ -1,12 +1,12 @@
 {{ $d := .data }}
-{{ $heroImage := "/images/works-brand-campaigns.jpg" }}
+{{ $heroImage := "/images/hero/phish-heroimage-commercialcollab.JPG" }}
 {{ with $d.buckets }}
   {{ with index . 0 }}
     {{ with .image }}{{ $heroImage = printf "/images/%s" . }}{{ end }}
   {{ end }}
 {{ end }}
 <section class="works-hero-block" aria-labelledby="works-heading">
-  <img class="works-hero-image" src="{{ $heroImage }}" alt="Works hero background" loading="eager" fetchpriority="high">
+  {{ partial "media/responsive_image.html" (dict "src" $heroImage "alt" "Works hero background" "class" "works-hero-image" "loading" "eager" "fetchpriority" "high" "sizes" "100vw" "fallbackWidth" 1920) }}
   <div class="works-hero-overlay"></div>
   <div class="works-shell works-hero-copy">
     <p class="works-kicker">{{ $d.title }}</p>

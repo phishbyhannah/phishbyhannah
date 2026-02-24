@@ -1,0 +1,63 @@
+{{- $src := .src -}}
+{{- $alt := .alt | default "" -}}
+{{- $class := .class -}}
+{{- $id := .id -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $decoding := .decoding | default "async" -}}
+{{- $fetchpriority := .fetchpriority -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $style := .style -}}
+{{- $widths := .widths | default (slice 480 768 1024 1366 1600 1920) -}}
+{{- $fallbackWidth := .fallbackWidth | default 1366 -}}
+{{- $jpegQuality := .jpegQuality | default (.Site.Params.imageJPEGQuality | default 84) -}}
+{{- $webpQuality := .webpQuality | default (.Site.Params.imageWebPQuality | default 82) -}}
+{{- $generateWebP := ne hugo.Environment "development" -}}
+
+{{- $printPlain := true -}}
+{{- if and $src (strings.HasPrefix $src "/images/") -}}
+  {{- with resources.Get (strings.TrimPrefix "/" $src) -}}
+    {{- $img := . -}}
+    {{- $jpgSet := slice -}}
+    {{- $webpSet := slice -}}
+    {{- range $w := $widths -}}
+      {{- if ge $img.Width $w -}}
+        {{- $jpg := $img.Resize (printf "%dx q%d lanczos photo" $w $jpegQuality) -}}
+        {{- $jpgSet = $jpgSet | append (printf "%s %dw" $jpg.RelPermalink $w) -}}
+        {{- if $generateWebP -}}
+          {{- $webp := $img.Resize (printf "%dx webp q%d lanczos photo" $w $webpQuality) -}}
+          {{- $webpSet = $webpSet | append (printf "%s %dw" $webp.RelPermalink $w) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- $fallback := $img -}}
+    {{- if ge $img.Width $fallbackWidth -}}
+      {{- $fallback = $img.Resize (printf "%dx q%d lanczos photo" $fallbackWidth $jpegQuality) -}}
+    {{- end -}}
+
+<picture>
+  {{- if gt (len $webpSet) 0 -}}
+  <source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}">
+  {{- end -}}
+  <img src="{{ $fallback.RelPermalink }}"
+    {{- if gt (len $jpgSet) 0 }} srcset="{{ delimit $jpgSet ", " }}" sizes="{{ $sizes }}"{{ end -}}
+    alt="{{ $alt }}"
+    width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
+    loading="{{ $loading }}"
+    decoding="{{ $decoding }}"
+    {{- with $class }} class="{{ . }}"{{ end -}}
+    {{- with $id }} id="{{ . }}"{{ end -}}
+    {{- with $fetchpriority }} fetchpriority="{{ . }}"{{ end -}}
+    {{- with $style }} style="{{ . }}"{{ end -}}>
+</picture>
+    {{- $printPlain = false -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $printPlain -}}
+<img src="{{ $src }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="{{ $decoding }}"
+  {{- with $class }} class="{{ . }}"{{ end -}}
+  {{- with $id }} id="{{ . }}"{{ end -}}
+  {{- with $fetchpriority }} fetchpriority="{{ . }}"{{ end -}}
+  {{- with $style }} style="{{ . }}"{{ end -}}>
+{{- end -}}

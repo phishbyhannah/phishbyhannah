@@ -1,5 +1,21 @@
 {{ $s := .section }}
 {{ $tone := cond (eq $s.tone "light") "tone-light" "tone-dark" }}
+{{ $paragraphs := $s.paragraphs | default (slice) }}
+{{ $hasParagraphs := gt (len $paragraphs) 0 }}
+{{ $hasLongParagraphs := gt (len $paragraphs) 1 }}
+{{ $hasBullets := gt (len ($s.bullets | default (slice))) 0 }}
+{{ $hasClosing := ne (default "" $s.closing) "" }}
+{{ $hasExtraCopy := or $hasLongParagraphs (or $hasBullets $hasClosing) }}
+{{ $allowReadMore := ne $s.id "field-step-into" }}
+{{ $leadFromBullets := and (not $hasParagraphs) $hasBullets }}
+{{ $lead := "" }}
+{{ if $hasParagraphs }}
+  {{ $lead = index $paragraphs 0 }}
+{{ else if $hasBullets }}
+  {{ $lead = index $s.bullets 0 }}
+{{ else if $hasClosing }}
+  {{ $lead = $s.closing }}
+{{ end }}
 {{ $bgImage := "" }}
 {{ with $s.bg_image }}
   {{ with $.page.Resources.GetMatch . }}
@@ -25,11 +41,22 @@
   {{ end }}
 {{ end }}
 <section id="{{ $s.id }}" class="field-section field-copy {{ $tone }}{{ if $s.narrow }} field-copy-narrow{{ end }}">
-  {{ with $bgImage }}<img class="field-bg" src="{{ . }}" alt="{{ $s.title }} background" loading="lazy">{{ end }}
-  {{ with $secondaryImage }}<img class="field-bg-secondary" src="{{ . }}" alt="{{ $s.title }} secondary background" loading="lazy">{{ end }}
-  {{ with $tertiaryImage }}<img class="field-bg-tertiary" src="{{ . }}" alt="{{ $s.title }} tertiary background" loading="lazy">{{ end }}
+  {{ with $bgImage }}{{ partial "media/responsive_image.html" (dict "src" . "alt" (printf "%s background" $s.title) "class" "field-bg" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
+  {{ with $secondaryImage }}{{ partial "media/responsive_image.html" (dict "src" . "alt" (printf "%s secondary background" $s.title) "class" "field-bg-secondary" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
+  {{ with $tertiaryImage }}{{ partial "media/responsive_image.html" (dict "src" . "alt" (printf "%s tertiary background" $s.title) "class" "field-bg-tertiary" "loading" "lazy" "sizes" "100vw" "fallbackWidth" 1600) }}{{ end }}
   {{ if $s.overlay }}<div class="field-overlay"></div>{{ end }}
-  <div class="field-wrap{{ if $s.narrow }} field-narrow{{ end }}">
+  {{ if eq $s.id "field-step-into" }}
+  <div class="field-wrap field-step-into-single{{ if $s.narrow }} field-narrow{{ end }}">
+    {{ with $s.title }}<h2>{{ . }}</h2>{{ end }}
+    {{ with $s.bullets }}
+    <ul class="field-list">
+      {{ range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    {{ with $s.closing }}<p class="field-mobile-lead">{{ . }}</p>{{ end }}
+  </div>
+  {{ else }}
+  <div class="field-wrap field-desktop-copy{{ if $s.narrow }} field-narrow{{ end }}">
     {{ with $s.title }}<h2>{{ . }}</h2>{{ end }}
     {{ range $s.paragraphs }}<p>{{ . }}</p>{{ end }}
     {{ with $s.bullets }}
@@ -39,4 +66,29 @@
     {{ end }}
     {{ with $s.closing }}<p>{{ . }}</p>{{ end }}
   </div>
+  <div class="field-wrap field-mobile-story{{ if $s.narrow }} field-narrow{{ end }}">
+    {{ with $s.title }}<h2>{{ . }}</h2>{{ end }}
+    {{ with $lead }}<p class="field-mobile-lead">{{ . }}</p>{{ end }}
+  </div>
+  {{ end }}
+  {{ if and $hasExtraCopy $allowReadMore }}
+  <details class="field-mobile-more field-wrap{{ if $s.narrow }} field-narrow{{ end }}">
+    <summary>Read more</summary>
+    <div class="field-mobile-more-body">
+      {{ if $hasLongParagraphs }}
+        {{ range after 1 $paragraphs }}<p>{{ . }}</p>{{ end }}
+      {{ end }}
+      {{ with $s.bullets }}
+      <ul class="field-list">
+        {{ if $leadFromBullets }}
+          {{ range after 1 . }}<li>{{ . }}</li>{{ end }}
+        {{ else }}
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ with $s.closing }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </details>
+  {{ end }}
 </section>

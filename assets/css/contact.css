@@ -107,7 +107,7 @@
 .contact-transition-overlay {
   position: absolute;
   inset: 0;
-  background: transparent;
+  background: linear-gradient(to top, rgba(8, 13, 18, 0.68), rgba(8, 13, 18, 0.2));
 }
 
 .contact-transition-letters {
@@ -136,6 +136,9 @@
   margin: 0 0 0.85rem;
   text-align: left;
   background: transparent !important;
+  backdrop-filter: none;
+  padding: 0;
+  border: 0;
 }
 
 .contact-transition-title {
@@ -268,8 +271,10 @@
 .contact-quote-image {
   position: relative;
   overflow: clip;
-  padding: 6rem 1rem;
+  padding: 6rem 1rem 1.2rem;
   border-top: 0;
+  display: flex;
+  align-items: flex-end;
 }
 
 .contact-quote-bg {
@@ -297,16 +302,8 @@
 .contact-quote-copy p {
   margin: 0 0 0.5rem;
   font-size: clamp(1.02rem, 1.9vw, 1.24rem);
-  line-height: 1.72;
+  line-height: 1.78;
   font-style: italic;
-}
-
-.contact-quote-copy p:first-child::before {
-  content: '"';
-}
-
-.contact-quote-copy p:last-child::after {
-  content: '"';
 }
 
 .contact-reveal {
@@ -365,22 +362,22 @@
   align-items: center;
   justify-content: center;
   padding: 0.58rem 1rem;
-  border: 1px solid rgba(244, 246, 252, 0.55);
+  border: 1px solid rgba(244, 246, 252, 0.62);
   color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-size: 0.84rem;
-  background: rgba(8, 13, 18, 0.12);
-  backdrop-filter: blur(2px);
+  background: rgba(8, 13, 18, 0.24);
+  backdrop-filter: none;
   transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
 }
 
 .contact-bottom-link:hover {
   transform: translateY(-1px);
-  border-color: var(--focus);
+  border-color: rgba(244, 246, 252, 0.9);
   color: var(--focus);
-  background: rgba(8, 13, 18, 0.26);
+  background: rgba(8, 13, 18, 0.34);
 }
 
 .contact-bottom-link:focus-visible {
@@ -424,10 +421,54 @@
 @media (max-width: 760px) {
   .contact-hero-holder {
     min-height: 90svh;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0 1rem 1rem;
+  }
+
+  .contact-hero-letters {
+    top: auto;
+    bottom: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92vw, 520px);
+  }
+
+  .contact-hero-inner {
+    width: min(92vw, 36rem);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    position: relative;
+    z-index: 3;
+    margin: 0 auto;
   }
 
   .contact-transition-holder {
-    padding: 5rem 1rem;
+    padding: 0 1rem 1rem;
+    min-height: 86svh;
+  }
+
+  .contact-transition-letters {
+    top: auto;
+    bottom: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92vw, 520px);
+  }
+
+  .contact-transition-post {
+    min-height: 86svh;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .contact-transition-copy {
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .contact-form-holder {
@@ -449,6 +490,15 @@
     object-position: center 68%;
   }
 
+  .contact-quote-copy {
+    width: min(92vw, 36rem);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
   .contact-bottom-overlay {
     top: auto;
     bottom: 0.9rem;
@@ -459,5 +509,10 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-bottom-link {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
   }
 }
