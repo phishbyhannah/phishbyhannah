@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "total_in_unused_csv": 415,
+    "moved": 415,
+    "missing_before_move": 0,
+    "errors": 0,
+    "quarantine_dir": "/Users/Hannah/clawd/projects/phishbyhannah/.cleanup/unused-images-2026-02-24"
+  },
+  "missing": [],
+  "errors": []
+}
